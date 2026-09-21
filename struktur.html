@@ -10,34 +10,35 @@
    <!-- Header Section -->
     <header>
         <div class="logo">
-            <a href="#">TRIGYM</a>
+            <a href="#">
+                <img src="assets/logo.png" alt="TriGym">
+            </a>
         </div>
-        
+
         <!-- Navigation Menu -->
         <nav>
             <ul>
                 <li><a href="#fasilitas">Fasilitas</a></li>
                 <li><a href="#kelas">Kelas</a></li>
-                <li><a href="#paket">Paket Membership</a></li>
-                <li><a href="#kontak">Kontak</a></li>
+                <li><a href="#paket">Membership</a></li>
             </ul>
         </nav>
 
         <!-- Auth Buttons -->
         <div class="auth-buttons">
-            <a href="#signin">Sign In</a>
-            <a href="#signup">Sign Up</a>
+            <a href="#signin">Sign in</a>
+            <a href="#signup">Sign up</a>
         </div>
     </header>
 
     <!-- Main Content -->
     <main>
-        <!-- Hero Section (Isi konten hero kamu di sini) -->
+        <!-- Hero Section -->
         <section id="hero">
-             <h1>TRIGYM</h1>
-            <div>
+            <img src="assets/logo.png" alt="TriGym" class="hero-logo">
+            <div class="hero-copy">
                 <p>Tempat latihan yang lengkap, bersih, dan nyaman. Alat modern, pelatih berpengalaman, dan jadwal kelas yang fleksibel untuk semua level.</p>
-                <a href="#paket" class="hero-cta">Lihat paket</a>
+                <a href="#paket" class="hero-cta">Lihat Paket</a>
             </div>
         </section>
 
@@ -46,27 +47,39 @@
             <h2>Fasilitas Kami</h2>
             <div>
                 <h3>Peralatan Modern</h3>
-                <p>Deskripsi singkat fasilitas...</p>
+                <p>Lebih dari 60 unit alat kardio dan beban dari merek terpercaya, dirawat rutin setiap minggu. Semua dilengkapi panduan pemakaian singkat di setiap unit.</p>
             </div>
             <div>
                 <h3>Personal Trainer</h3>
-                <p>Deskripsi singkat instruktur...</p>
+                <p>Pelatih bersertifikat yang menyusun program sesuai kondisi dan target kamu, dari menurunkan berat badan sampai menambah massa otot. Sesi pertama gratis untuk semua anggota baru.</p>
             </div>
             <div>
-                <h3>Area Luas & Nyaman</h3>
-                <p>Deskripsi kenyamanan gym...</p>
+                <h3>Area Luas &amp; Nyaman</h3>
+                <p>Ruang latihan 800&nbsp;m² dengan pendingin udara, loker, dan kamar bilas air panas. Buka setiap hari pukul 06.00–22.00.</p>
             </div>
         </section>
 
         <!-- Section Kelas -->
         <section id="kelas">
             <h2>Pilihan Kelas</h2>
-            <ul>
-                <li>Yoga & Pilates</li>
-                <li>Weight Training</li>
-                <li>Cardio & HIIT</li>
-                <li>Zumba</li>
-            </ul>
+            <div class="kelas-grid">
+                <details class="kelas-item">
+                    <summary>Yoga &amp; Pilates</summary>
+                    <p>Latihan fokus pernapasan dan fleksibilitas, cocok untuk meredakan stres sekaligus memperkuat otot inti.</p>
+                </details>
+                <details class="kelas-item">
+                    <summary>Weight Training</summary>
+                    <p>Program angkat beban terstruktur untuk membangun massa otot dan kekuatan secara bertahap.</p>
+                </details>
+                <details class="kelas-item">
+                    <summary>Cardio &amp; HIIT</summary>
+                    <p>Sesi interval intensitas tinggi yang membakar kalori maksimal dalam waktu singkat.</p>
+                </details>
+                <details class="kelas-item">
+                    <summary>Zumba</summary>
+                    <p>Kelas dansa berenergi diiringi musik, cara seru membakar kalori tanpa terasa seperti olahraga.</p>
+                </details>
+            </div>
         </section>
 
         <!-- Section Membership / Paket -->
@@ -74,12 +87,12 @@
             <h2>Paket Membership</h2>
             <div>
                 <h3>Paket Bulanan</h3>
-                <p>Harga dan benefit...</p>
+                <p>Rp250.000/bulan. Akses penuh ke semua alat dan kelas grup, fleksibel tanpa kontrak jangka panjang.</p>
                 <button>Pilih Paket</button>
             </div>
             <div>
                 <h3>Paket Tahunan</h3>
-                <p>Harga dan benefit...</p>
+                <p>Rp2.400.000/tahun (hemat 2 bulan). Semua benefit paket bulanan, plus 1x sesi konsultasi personal trainer gratis tiap bulan.</p>
                 <button>Pilih Paket</button>
             </div>
         </section>
@@ -90,7 +103,7 @@
         <p>&copy; 2026 TRIGYM. All Rights Reserved.</p>
         <ul>
             <li><a href="#">Kebijakan Privasi</a></li>
-            <li><a href="#">Syarat & Ketentuan</a></li>
+            <li><a href="#">Syarat &amp; Ketentuan</a></li>
         </ul>
     </footer>
 </body>
