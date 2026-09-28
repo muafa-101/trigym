@@ -37,7 +37,7 @@
         <section id="hero">
             <img src="assets/logo.png" alt="TriGym" class="hero-logo">
             <div class="hero-copy">
-                <p>Tempat latihan yang lengkap, bersih, dan nyaman. Alat modern, pelatih berpengalaman, dan jadwal kelas yang fleksibel untuk semua level.</p>
+                <p id="copyright">Tempat latihan yang lengkap, bersih, dan nyaman. Alat modern, pelatih berpengalaman, dan jadwal kelas yang fleksibel untuk semua level.</p>
                 <a href="#paket" class="hero-cta">Lihat Paket</a>
             </div>
         </section>
@@ -88,12 +88,12 @@
             <div>
                 <h3>Paket Bulanan</h3>
                 <p>Rp250.000/bulan. Akses penuh ke semua alat dan kelas grup, fleksibel tanpa kontrak jangka panjang.</p>
-                <button>Pilih Paket</button>
+                <button id="paket-1">Pilih Paket</button>
             </div>
             <div>
                 <h3>Paket Tahunan</h3>
                 <p>Rp2.400.000/tahun (hemat 2 bulan). Semua benefit paket bulanan, plus 1x sesi konsultasi personal trainer gratis tiap bulan.</p>
-                <button>Pilih Paket</button>
+                <button id="paket-2">Pilih Paket</button>
             </div>
         </section>
     </main>
@@ -106,5 +106,35 @@
             <li><a href="#">Syarat &amp; Ketentuan</a></li>
         </ul>
     </footer>
+
+    <script>
+        let copyrightMode = [
+            "Tempat latihan yang lengkap, bersih, dan nyaman. Alat modern, pelatih berpengalaman, dan jadwal kelas yang fleksibel untuk semua level.",
+            "Liat paket dan join sekarang!"
+        ]
+        let copyrightFlag = 0;
+        const copyrightDom = document.getElementById("copyright");
+
+        setInterval(() => {
+            if(copyrightFlag === 0) {
+                copyrightFlag = 1
+            } else {
+                copyrightFlag = 0;
+            }
+
+            copyrightDom.textContent = copyrightMode[copyrightFlag];
+        }, 3000)
+
+        const paket1 = document.getElementById("paket-1");
+        const paket2 = document.getElementById("paket-2");
+
+        paket1.addEventListener("click", function () {
+            alert("Test");
+        })
+
+        paket2.addEventListener("click", function () {
+            alert("Test");
+        })
+    </script>
 </body>
 </html>
