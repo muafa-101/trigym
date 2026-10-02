@@ -1,19 +1,17 @@
 @import "tailwindcss";
 
 @theme {
-  --color-sky: #A6E8FA;
-  --color-sky-deep: #6FD1F0;
-  --color-teal: #1791AE;
-  --color-teal-deep: #126F87;
-  --color-green: #5FA610;
-  --color-green-light: #93CC54;
-  --color-coral: #FA7B70;
-  --color-coral-deep: #F15B4F;
-  --color-pink: #D5116A;
-  --color-ink: #16191F;
-  --color-muted: #5B646F;
-
-  --radius-custom: 16px;
-  --shadow-custom: 0 12px 26px rgba(22, 25, 31, .12);
-  --shadow-coral-hover: 0 16px 32px rgba(241, 91, 79, .35);
+  --font-sans: "Asap", system-ui, sans-serif;
+  --font-display: "Anton", Impact, sans-serif;
+ 
+  --color-ink: #000000;          /* tombol Lihat Paket, footer, teks */
+  --color-sky: #a8e6f8;          /* cadangan bila gambar background belum termuat */
+  --color-header: #006a8a;       /* BARU: bar navigasi atas */
+  --color-card: #f1f1f1;         /* BARU: kartu abu-abu terang yang membungkus konten */
+  --color-pink: #c42b6f;         /* garis pemisah & judul section */
+  --color-teal: #0090be;         /* kartu Fasilitas */
+  --color-green: #5cb500;        /* tombol kelas */
+  --color-green-light: #a2de69;  /* panel isi kelas */
+  --color-coral: #ff7070;        /* kartu paket */
+  --color-coral-deep: #ff6b6b;   /* teks tombol Pilih Paket */
 }

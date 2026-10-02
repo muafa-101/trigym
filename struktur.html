@@ -4,114 +4,129 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TRIGYM - Tugas Pemrograman Web</title>
+
+    <!-- Font sesuai desain: Anton (judul) + Asap (teks) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Asap:wght@400;500;600&display=swap" rel="stylesheet">
+
     <!-- Menghubungkan ke file CSS hasil compile Tailwind CLI -->
     <link href="./src/output.css" rel="stylesheet">
+
+    <style>
+        body { font-family: 'Asap', sans-serif; }
+        .font-display { font-family: 'Anton', 'Impact', sans-serif; font-weight: 400; letter-spacing: 0.2px; }
+
+        /* ====== BACKGROUND GAMBAR ======
+           Ganti path di bawah dengan gambar milikmu (taruh di folder assets/) */
+        body {
+            background-color: #C9EFFA; /* sama dengan warna dasar gambar, jadi sambungannya mulus */
+            background-image: url('assets/BACKGROUND.png');
+            background-size: 100% auto; 
+            background-position: top center;
+            background-repeat: no-repeat;
+        }
+        /* Hilangkan panah bawaan <details> */
+        summary::-webkit-details-marker { display: none; }
+    </style>
 </head>
-<body class="font-sans text-ink bg-white leading-relaxed antialiased">
+<body class="text-black leading-relaxed antialiased">
 
     <!-- Header Section -->
-    <header class="sticky top-0 z-50 flex items-center justify-between gap-8 px-6 py-[18px] bg-sky max-[900px]:flex-wrap min-[901px]:px-12">
-        <div class="logo">
-            <a href="#" class="inline-block">
-                <img src="assets/logo.png" alt="TriGym" class="h-10 w-auto">
-            </a>
-        </div>
+    <header class="sticky top-0 z-50 flex items-center gap-6 px-5 h-[52px] bg-[#006A8B] max-[900px]:h-auto max-[900px]:py-2 max-[900px]:flex-wrap">
+        <a href="#" class="inline-block shrink-0">
+            <img src="assets/logo.png" alt="TriGym" class="h-[34px] w-auto">
+        </a>
 
-        <!-- Navigation Menu -->
-        <nav class="max-[900px]:order-3 max-[900px]:w-full">
-            <ul class="flex gap-[46px] max-[900px]:justify-between max-[900px]:gap-4">
-                <li>
-                    <a href="#fasilitas" class="relative text-base font-medium text-[#16313B] py-1 after:content-[''] after:absolute after:left-0 after:bottom-0 after:w-0 after:h-[2px] after:bg-pink after:transition-all after:duration-250 hover:after:w-full focus-visible:after:w-full focus-visible:outline-3 focus-visible:outline-pink focus-visible:outline-offset-3">Fasilitas</a>
-                </li>
-                <li>
-                    <a href="#kelas" class="relative text-base font-medium text-[#16313B] py-1 after:content-[''] after:absolute after:left-0 after:bottom-0 after:w-0 after:h-[2px] after:bg-pink after:transition-all after:duration-250 hover:after:w-full focus-visible:after:w-full focus-visible:outline-3 focus-visible:outline-pink focus-visible:outline-offset-3">Kelas</a>
-                </li>
-                <li>
-                    <a href="#paket" class="relative text-base font-medium text-[#16313B] py-1 after:content-[''] after:absolute after:left-0 after:bottom-0 after:w-0 after:h-[2px] after:bg-pink after:transition-all after:duration-250 hover:after:w-full focus-visible:after:w-full focus-visible:outline-3 focus-visible:outline-pink focus-visible:outline-offset-3">Membership</a>
-                </li>
+        <!-- Navigation Menu (semua menu dalam satu baris, rata) -->
+        <nav class="ml-0 min-[901px]:ml-10 max-[900px]:w-full max-[900px]:order-3">
+            <ul class="flex items-center gap-8 max-[900px]:justify-between max-[900px]:gap-4">
+                <li><a href="#fasilitas" class="text-white text-base py-1 hover:underline underline-offset-4 decoration-2 decoration-[#C42B6F] focus-visible:outline-3 focus-visible:outline-[#C42B6F]">Fasilitas</a></li>
+                <li><a href="#kelas" class="text-white text-base py-1 hover:underline underline-offset-4 decoration-2 decoration-[#C42B6F] focus-visible:outline-3 focus-visible:outline-[#C42B6F]">Kelas</a></li>
+                <li><a href="#paket" class="text-white text-base py-1 hover:underline underline-offset-4 decoration-2 decoration-[#C42B6F] focus-visible:outline-3 focus-visible:outline-[#C42B6F]">Membership</a></li>
             </ul>
         </nav>
 
-        <!-- Auth Buttons -->
-        <div class="auth-buttons flex items-center gap-[34px]">
-            <a href="#signin" class="text-base font-medium text-[#16313B] transition-colors duration-200 hover:text-pink focus-visible:outline-3 focus-visible:outline-pink focus-visible:outline-offset-3">Sign in</a>
-            <a href="#signup" class="text-base font-medium text-[#16313B] transition-colors duration-200 hover:text-pink focus-visible:outline-3 focus-visible:outline-pink focus-visible:outline-offset-3">Sign up</a>
+        <!-- Auth Buttons: paling kanan -->
+        <div class="auth-buttons ml-auto flex items-center gap-3">
+            <a href="#signin" class="font-display text-[0.95rem] px-5 py-[5px] text-white border-2 border-white rounded-full transition-all duration-200 hover:bg-white hover:text-[#006A8B] hover:-translate-y-0.5 focus-visible:outline-3 focus-visible:outline-[#C42B6F]">Sign in</a>
+            <a href="#signup" class="font-display text-[0.95rem] px-5 py-[5px] text-white bg-[#C42B6F] border-2 border-[#C42B6F] rounded-full transition-all duration-200 hover:-translate-y-0.5 hover:bg-[#d93a82] hover:border-[#d93a82] hover:shadow-[0_5px_0_#7d1a45] focus-visible:outline-3 focus-visible:outline-[#C42B6F]">Sign up</a>
         </div>
     </header>
 
-    <!-- Main Content -->
-    <main class="max-w-[1200px] mx-auto px-6 min-[901px]:px-12">
+    <!-- Main Content: kartu abu-abu terang membulat di atas background gambar -->
+    <main class="max-w-[1072px] mx-4 min-[1120px]:mx-auto mt-8 mb-16 px-6 min-[901px]:px-9 pb-10 bg-[#F1F1F1] rounded-[20px] border-[2px] border-blue-300">
 
         <!-- Hero Section -->
-        <section id="hero" class="grid grid-cols-1 min-[901px]:grid-cols-[minmax(240px,320px)_1fr] gap-[28px] min-[901px]:gap-[60px] items-center pt-[30px] pb-6 py-[28px] min-[561px]:py-[36px]">
-            <img src="assets/logo.png" alt="TriGym" class="w-full h-auto">
+        <section id="hero" class="flex flex-col min-[901px]:flex-row items-center gap-6 min-[901px]:gap-[28px] pt-[28px] pb-[40px]">
+            <img src="assets/logo.png" alt="TriGym" class="w-[310px] max-w-full h-auto shrink-0">
             <div class="hero-copy">
-                <p id="copyright" class="max-w-[60ch] text-ink text-[1.08rem] mb-[22px]">
+                <p id="copyright" class="max-w-[60ch] text-black text-[1.08rem] leading-[2.1] mb-1">
                     Tempat latihan yang lengkap, bersih, dan nyaman. Alat modern, pelatih berpengalaman, dan jadwal kelas yang fleksibel untuk semua level.
                 </p>
-                <a href="#paket" class="inline-block px-[30px] py-[14px] bg-ink text-white font-bold rounded-lg transition-all duration-200 hover:bg-pink hover:-translate-y-0.5 focus-visible:outline-3 focus-visible:outline-pink focus-visible:outline-offset-3">
+                <a href="#paket" class="font-display inline-block px-[24px] py-[8px] bg-black text-white text-[1.15rem] rounded-full transition-all duration-200 hover:bg-[#C42B6F] hover:-translate-y-0.5 focus-visible:outline-3 focus-visible:outline-[#C42B6F] focus-visible:outline-offset-3">
                     Lihat Paket
                 </a>
             </div>
         </section>
 
         <!-- Section Fasilitas -->
-        <section id="fasilitas" class="grid grid-cols-1 min-[901px]:grid-cols-3 gap-[28px] border-t-5 border-pink py-[28px] min-[561px]:py-[36px]">
-            <h2 class="col-span-full mt-3.5 text-[2.1rem] font-extrabold tracking-[-0.5px] text-pink mb-[22px]">Fasilitas Kami</h2>
+        <section id="fasilitas" class="grid grid-cols-1 min-[901px]:grid-cols-3 gap-[30px] min-[901px]:gap-[50px] border-t-[10px] border-[#C42B6F] mt-14 pt-2 pb-8 px-0">
+            <h2 class="font-display col-span-full text-[2.6rem] leading-tight text-[#C42B6F] mt-3 mb-2">Fasilitas Kami</h2>
 
-            <div class="bg-teal rounded-custom p-[26px] min-h-[180px] transition-all duration-250 hover:-translate-y-[6px] hover:shadow-custom">
-                <h3 class="text-[1.3rem] font-extrabold text-white mb-3.5">Peralatan Modern</h3>
-                <p class="text-white/92 text-[0.98rem]">Lebih dari 60 unit alat kardio dan beban dari merek terpercaya, dirawat rutin setiap minggu. Semua dilengkapi panduan pemakaian singkat di setiap unit.</p>
+            <div class="bg-[#0090BE] rounded-[20px] transition-all duration-300 hover:-translate-y-2 hover:shadow-[0_16px_30px_rgba(0,0,0,0.3)] px-[19px] py-[22px] min-h-[400px] min-[901px]:min-h-[400px]">
+                <h3 class="font-display text-[2rem] leading-tight text-white mb-4 text-center">Peralatan Modern</h3>
+                <p class="text-white text-base leading-[2.1]">Lebih dari 60 unit alat kardio dan beban dari merek terpercaya, dirawat rutin setiap minggu. Semua dilengkapi panduan pemakaian singkat di setiap unit.</p>
             </div>
 
-            <div class="bg-teal rounded-custom p-[26px] min-h-[180px] transition-all duration-250 hover:-translate-y-[6px] hover:shadow-custom">
-                <h3 class="text-[1.3rem] font-extrabold text-white mb-3.5">Personal Trainer</h3>
-                <p class="text-white/92 text-[0.98rem]">Pelatih bersertifikat yang menyusun program sesuai kondisi dan target kamu, dari menurunkan berat badan sampai menambah massa otot. Sesi pertama gratis untuk semua anggota baru.</p>
+            <div class="bg-[#0090BE] rounded-[20px] transition-all duration-300 hover:-translate-y-2 hover:shadow-[0_16px_30px_rgba(0,0,0,0.3)] px-[19px] py-[22px] min-h-[400px]">
+                <h3 class="font-display text-[2rem] leading-tight text-white mb-4 text-center">Personal Trainer</h3>
+                <p class="text-white text-base leading-[2.1]">Pelatih bersertifikat yang menyusun program sesuai kondisi dan target kamu, dari menurunkan berat badan sampai menambah massa otot. Sesi pertama gratis untuk semua anggota baru.</p>
             </div>
 
-            <div class="bg-teal rounded-custom p-[26px] min-h-[180px] transition-all duration-250 hover:-translate-y-[6px] hover:shadow-custom">
-                <h3 class="text-[1.3rem] font-extrabold text-white mb-3.5">Area Luas &amp; Nyaman</h3>
-                <p class="text-white/92 text-[0.98rem]">Ruang latihan 800&nbsp;m² dengan pendingin udara, loker, dan kamar bilas air panas. Buka setiap hari pukul 06.00–22.00.</p>
+            <div class="bg-[#0090BE] rounded-[20px] transition-all duration-300 hover:-translate-y-2 hover:shadow-[0_16px_30px_rgba(0,0,0,0.3)] px-[19px] py-[22px] min-h-[400px]">
+                <h3 class="font-display text-[2rem] leading-tight text-white mb-4 text-center">Area Luas &amp; Nyaman</h3>
+                <p class="text-white text-base leading-[2.1]">Ruang latihan 800&nbsp;m² dengan pendingin udara, loker, dan kamar bilas air panas. Buka setiap hari pukul 06.00–22.00.</p>
             </div>
         </section>
 
         <!-- Section Kelas -->
-        <section id="kelas" class="border-t-5 border-pink py-[28px] min-[561px]:py-[36px]">
-            <h2 class="mt-3.5 text-[2.1rem] font-extrabold tracking-[-0.5px] text-pink mb-[22px]">Pilihan Kelas</h2>
-            <div class="grid grid-cols-1 min-[561px]:grid-cols-2 auto-rows-max gap-x-[36px] gap-y-[20px] items-start">
+        <section id="kelas" class="border-t-[10px] border-[#C42B6F] mt-14 pt-2 pb-8">
+            <h2 class="font-display text-[2.6rem] leading-tight text-[#C42B6F] mt-3 mb-3">Pilihan Kelas</h2>
+            <div class="grid grid-cols-1 min-[701px]:grid-cols-2 gap-x-[46px] gap-y-[22px] items-start">
 
-                <details class="group bg-green rounded-full overflow-hidden transition-all duration-200 open:rounded-[22px] open:shadow-custom">
-                    <summary class="list-none cursor-pointer px-[30px] py-[20px] flex items-center justify-center gap-[10px] text-[1.15rem] font-extrabold text-white text-center hover:bg-white/10 [&::-webkit-details-marker]:hidden after:content-['+'] after:text-[1.3rem] after:font-normal after:leading-none after:transition-transform after:duration-200 group-open:after:rotate-45 focus-visible:outline-3 focus-visible:outline-pink focus-visible:outline-offset-3">
+                <details class="group bg-[#5CB300] rounded-[16px] overflow-hidden transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_12px_24px_rgba(0,0,0,0.3)]">
+                    <summary class="font-display list-none cursor-pointer px-6 py-[10px] text-[2rem] leading-tight text-white text-center focus-visible:outline-3 focus-visible:outline-[#C42B6F]">
                         Yoga &amp; Pilates
                     </summary>
-                    <p class="px-[28px] pt-[18px] pb-[22px] bg-green-light text-[#223A0C] text-[0.96rem]">
+                    <p class="px-[16px] pt-[12px] pb-[18px] bg-[#A3DE68] text-white text-[0.95rem] leading-[2.1]">
                         Latihan fokus pernapasan dan fleksibilitas, cocok untuk meredakan stres sekaligus memperkuat otot inti.
                     </p>
                 </details>
 
-                <details class="group bg-green rounded-full overflow-hidden transition-all duration-200 open:rounded-[22px] open:shadow-custom">
-                    <summary class="list-none cursor-pointer px-[30px] py-[20px] flex items-center justify-center gap-[10px] text-[1.15rem] font-extrabold text-white text-center hover:bg-white/10 [&::-webkit-details-marker]:hidden after:content-['+'] after:text-[1.3rem] after:font-normal after:leading-none after:transition-transform after:duration-200 group-open:after:rotate-45 focus-visible:outline-3 focus-visible:outline-pink focus-visible:outline-offset-3">
+                <details class="group bg-[#5CB300] rounded-[16px] overflow-hidden transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_12px_24px_rgba(0,0,0,0.3)]">
+                    <summary class="font-display list-none cursor-pointer px-6 py-[10px] text-[2rem] leading-tight text-white text-center focus-visible:outline-3 focus-visible:outline-[#C42B6F]">
                         Weight Training
                     </summary>
-                    <p class="px-[28px] pt-[18px] pb-[22px] bg-green-light text-[#223A0C] text-[0.96rem]">
+                    <p class="px-[16px] pt-[12px] pb-[18px] bg-[#A3DE68] text-white text-[0.95rem] leading-[2.1]">
                         Program angkat beban terstruktur untuk membangun massa otot dan kekuatan secara bertahap.
                     </p>
                 </details>
 
-                <details class="group bg-green rounded-full overflow-hidden transition-all duration-200 open:rounded-[22px] open:shadow-custom">
-                    <summary class="list-none cursor-pointer px-[30px] py-[20px] flex items-center justify-center gap-[10px] text-[1.15rem] font-extrabold text-white text-center hover:bg-white/10 [&::-webkit-details-marker]:hidden after:content-['+'] after:text-[1.3rem] after:font-normal after:leading-none after:transition-transform after:duration-200 group-open:after:rotate-45 focus-visible:outline-3 focus-visible:outline-pink focus-visible:outline-offset-3">
+                <details class="group bg-[#5CB300] rounded-[16px] overflow-hidden transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_12px_24px_rgba(0,0,0,0.3)]">
+                    <summary class="font-display list-none cursor-pointer px-6 py-[10px] text-[2rem] leading-tight text-white text-center focus-visible:outline-3 focus-visible:outline-[#C42B6F]">
                         Cardio &amp; HIIT
                     </summary>
-                    <p class="px-[28px] pt-[18px] pb-[22px] bg-green-light text-[#223A0C] text-[0.96rem]">
+                    <p class="px-[16px] pt-[12px] pb-[18px] bg-[#A3DE68] text-white text-[0.95rem] leading-[2.1]">
                         Sesi interval intensitas tinggi yang membakar kalori maksimal dalam waktu singkat.
                     </p>
                 </details>
 
-                <details class="group bg-green rounded-full overflow-hidden transition-all duration-200 open:rounded-[22px] open:shadow-custom">
-                    <summary class="list-none cursor-pointer px-[30px] py-[20px] flex items-center justify-center gap-[10px] text-[1.15rem] font-extrabold text-white text-center hover:bg-white/10 [&::-webkit-details-marker]:hidden after:content-['+'] after:text-[1.3rem] after:font-normal after:leading-none after:transition-transform after:duration-200 group-open:after:rotate-45 focus-visible:outline-3 focus-visible:outline-pink focus-visible:outline-offset-3">
+                <details class="group bg-[#5CB300] rounded-[16px] overflow-hidden transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_12px_24px_rgba(0,0,0,0.3)]">
+                    <summary class="font-display list-none cursor-pointer px-6 py-[10px] text-[2rem] leading-tight text-white text-center focus-visible:outline-3 focus-visible:outline-[#C42B6F]">
                         Zumba
                     </summary>
-                    <p class="px-[28px] pt-[18px] pb-[22px] bg-green-light text-[#223A0C] text-[0.96rem]">
+                    <p class="px-[16px] pt-[12px] pb-[18px] bg-[#A3DE68] text-white text-[0.95rem] leading-[2.1]">
                         Kelas dansa berenergi diiringi musik, cara seru membakar kalori tanpa terasa seperti olahraga.
                     </p>
                 </details>
@@ -120,21 +135,21 @@
         </section>
 
         <!-- Section Membership / Paket -->
-        <section id="paket" class="grid grid-cols-1 min-[901px]:grid-cols-2 gap-[32px] border-t-5 border-pink py-[28px] min-[561px]:py-[36px]">
-            <h2 class="col-span-full mt-3.5 text-[2.1rem] font-extrabold tracking-[-0.5px] text-pink mb-[22px]">Paket Membership</h2>
+        <section id="paket" class="grid grid-cols-1 min-[901px]:grid-cols-2 gap-[40px] border-t-[10px] border-[#C42B6F] mt-14 pt-2">
+            <h2 class="font-display col-span-full text-[2.6rem] leading-tight text-[#C42B6F] mt-3 mb-1">Paket Membership</h2>
 
-            <div class="flex flex-col items-start gap-3.5 bg-coral rounded-custom p-[28px_30px] min-h-[210px] text-white transition-all duration-250 hover:-translate-y-[6px] hover:shadow-coral-hover">
-                <h3 class="text-[1.45rem] font-extrabold">Paket Bulanan</h3>
-                <p class="text-white/95 text-[0.98rem]">Rp250.000/bulan. Akses penuh ke semua alat dan kelas grup, fleksibel tanpa kontrak jangka panjang.</p>
-                <button id="paket-1" class="mt-auto px-[28px] py-[13px] font-inherit font-bold text-coral-deep bg-white border-2 border-white rounded-full cursor-pointer transition-all duration-200 hover:-translate-y-0.5 hover:bg-transparent hover:text-white focus-visible:outline-3 focus-visible:outline-pink focus-visible:outline-offset-3">
+            <div class="flex flex-col items-start gap-1 bg-[#FF7070] rounded-[20px] transition-all duration-300 hover:-translate-y-2 hover:shadow-[0_16px_30px_rgba(0,0,0,0.3)] px-[30px] py-[24px] min-h-[400px] text-white">
+                <h3 class="font-display text-[3rem] leading-tight">Paket Bulanan</h3>
+                <p class="text-base leading-[2.1]">Rp250.000/bulan.<br>Akses penuh ke semua alat dan kelas grup, fleksibel tanpa kontrak jangka panjang.</p>
+                <button id="paket-1" class="font-display mt-auto px-[28px] py-[10px] text-[1.1rem] uppercase text-[#FF7070] bg-white border-2 border-white rounded-full cursor-pointer transition-all duration-200 hover:-translate-y-0.5 hover:bg-transparent hover:text-white focus-visible:outline-3 focus-visible:outline-[#C42B6F] focus-visible:outline-offset-3">
                     Pilih Paket
                 </button>
             </div>
 
-            <div class="flex flex-col items-start gap-3.5 bg-coral rounded-custom p-[28px_30px] min-h-[210px] text-white transition-all duration-250 hover:-translate-y-[6px] hover:shadow-coral-hover">
-                <h3 class="text-[1.45rem] font-extrabold">Paket Tahunan</h3>
-                <p class="text-white/95 text-[0.98rem]">Rp2.400.000/tahun (hemat 2 bulan). Semua benefit paket bulanan, plus 1x sesi konsultasi personal trainer gratis tiap bulan.</p>
-                <button id="paket-2" class="mt-auto px-[28px] py-[13px] font-inherit font-bold text-coral-deep bg-white border-2 border-white rounded-full cursor-pointer transition-all duration-200 hover:-translate-y-0.5 hover:bg-transparent hover:text-white focus-visible:outline-3 focus-visible:outline-pink focus-visible:outline-offset-3">
+            <div class="flex flex-col items-start gap-1 bg-[#FF7070] rounded-[20px] transition-all duration-300 hover:-translate-y-2 hover:shadow-[0_16px_30px_rgba(0,0,0,0.3)] px-[30px] py-[24px] min-h-[400px] text-white">
+                <h3 class="font-display text-[3rem] leading-tight">Paket Tahunan</h3>
+                <p class="text-base leading-[2.1]">Rp2.400.000/tahun (hemat 2 bulan).<br>Semua benefit paket bulanan, plus 1x sesi konsultasi personal trainer gratis tiap bulan.</p>
+                <button id="paket-2" class="font-display mt-auto px-[28px] py-[10px] text-[1.1rem] uppercase text-[#FF7070] bg-white border-2 border-white rounded-full cursor-pointer transition-all duration-200 hover:-translate-y-0.5 hover:bg-transparent hover:text-white focus-visible:outline-3 focus-visible:outline-[#C42B6F] focus-visible:outline-offset-3">
                     Pilih Paket
                 </button>
             </div>
@@ -143,11 +158,11 @@
     </main>
 
     <!-- Footer Section -->
-    <footer class="flex flex-col min-[901px]:flex-row items-center justify-between flex-wrap gap-[16px] mt-5 px-6 py-[28px] min-[901px]:px-12 min-[901px]:py-6 bg-ink text-white/72 text-[0.9rem] text-center min-[901px]:text-left">
-        <p class="text-white">&copy; 2026 TRIGYM. All Rights Reserved.</p>
+    <footer class="flex flex-col min-[901px]:flex-row items-center justify-between flex-wrap gap-[16px] px-6 py-[28px] min-[901px]:px-12 min-[901px]:py-6 bg-[#006A8B] text-white text-[0.9rem] text-center min-[901px]:text-left">
+        <p>&copy; 2026 TRIGYM. All Rights Reserved.</p>
         <ul class="flex gap-[26px]">
-            <li><a href="#" class="text-white transition-colors duration-200 hover:text-sky focus-visible:outline-3 focus-visible:outline-pink focus-visible:outline-offset-3">Kebijakan Privasi</a></li>
-            <li><a href="#" class="text-white transition-colors duration-200 hover:text-sky focus-visible:outline-3 focus-visible:outline-pink focus-visible:outline-offset-3">Syarat &amp; Ketentuan</a></li>
+            <li><a href="#" class="transition-colors duration-200 hover:underline focus-visible:outline-3 focus-visible:outline-[#C42B6F]">Kebijakan Privasi</a></li>
+            <li><a href="#" class="transition-colors duration-200 hover:underline focus-visible:outline-3 focus-visible:outline-[#C42B6F]">Syarat &amp; Ketentuan</a></li>
         </ul>
     </footer>
 
