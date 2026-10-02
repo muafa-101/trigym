@@ -1,0 +1,19 @@
+@import "tailwindcss";
+
+@theme {
+  --color-sky: #A6E8FA;
+  --color-sky-deep: #6FD1F0;
+  --color-teal: #1791AE;
+  --color-teal-deep: #126F87;
+  --color-green: #5FA610;
+  --color-green-light: #93CC54;
+  --color-coral: #FA7B70;
+  --color-coral-deep: #F15B4F;
+  --color-pink: #D5116A;
+  --color-ink: #16191F;
+  --color-muted: #5B646F;
+
+  --radius-custom: 16px;
+  --shadow-custom: 0 12px 26px rgba(22, 25, 31, .12);
+  --shadow-coral-hover: 0 16px 32px rgba(241, 91, 79, .35);
+}

@@ -3,49 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>tugas pemrograman web</title>
-    <!-- Tailwind CSS CDN for quick setup / testing -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        sky: {
-                            DEFAULT: '#A6E8FA',
-                            deep: '#6FD1F0',
-                        },
-                        teal: {
-                            DEFAULT: '#1791AE',
-                            deep: '#126F87',
-                        },
-                        green: {
-                            DEFAULT: '#5FA610',
-                            light: '#93CC54',
-                        },
-                        coral: {
-                            DEFAULT: '#FA7B70',
-                            deep: '#F15B4F',
-                        },
-                        pink: '#D5116A',
-                        ink: '#16191F',
-                        muted: '#5B646F',
-                    },
-                    borderRadius: {
-                        'custom': '16px',
-                    },
-                    boxShadow: {
-                        'custom': '0 12px 26px rgba(22, 25, 31, .12)',
-                        'coral-hover': '0 16px 32px rgba(241, 91, 79, .35)',
-                    }
-                }
-            }
-        }
-    </script>
+    <title>TRIGYM - Tugas Pemrograman Web</title>
+    <!-- Menghubungkan ke file CSS hasil compile Tailwind CLI -->
+    <link href="./src/output.css" rel="stylesheet">
 </head>
 <body class="font-sans text-ink bg-white leading-relaxed antialiased">
+
     <!-- Header Section -->
-    <header class="sticky top-0 z-50 flex items-center justify-between gap-8 px-6 py-4.5 bg-sky max-[900px]:flex-wrap min-[901px]:px-12">
+    <header class="sticky top-0 z-50 flex items-center justify-between gap-8 px-6 py-[18px] bg-sky max-[900px]:flex-wrap min-[901px]:px-12">
         <div class="logo">
             <a href="#" class="inline-block">
                 <img src="assets/logo.png" alt="TriGym" class="h-10 w-auto">
@@ -90,7 +55,7 @@
             </div>
         </section>
 
-        <!-- Section Fasilitas / Keunggulan -->
+        <!-- Section Fasilitas -->
         <section id="fasilitas" class="grid grid-cols-1 min-[901px]:grid-cols-3 gap-[28px] border-t-5 border-pink py-[28px] min-[561px]:py-[36px]">
             <h2 class="col-span-full mt-3.5 text-[2.1rem] font-extrabold tracking-[-0.5px] text-pink mb-[22px]">Fasilitas Kami</h2>
 
