@@ -4,55 +4,80 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sign Up - TRIGYM</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Asap:wght@400;500;600&display=swap" rel="stylesheet">
     <link href="./src/output.css" rel="stylesheet">
+
+    <style>
+        body { font-family: 'Asap', sans-serif; }
+        .font-display { font-family: 'Anton', 'Impact', sans-serif; font-weight: 400; letter-spacing: 0.2px; }
+        body {
+            background-color: #C9EFFA;
+            background-image: url('assets/BACKGROUND.png');
+            background-size: 100% auto;
+            background-position: top center;
+            background-repeat: no-repeat;
+        }
+    </style>
 </head>
-<body class="relative font-sans text-ink bg-sky min-h-screen flex items-center justify-center p-4 sm:p-6 overflow-hidden leading-relaxed antialiased">
+<body class="flex min-h-screen flex-col text-black leading-relaxed antialiased">
 
-    <!-- Dekorasi latar -->
-    <span class="pointer-events-none absolute -left-24 -top-24 size-72 rounded-full bg-pink sm:size-96" aria-hidden="true"></span>
-    <span class="pointer-events-none absolute -bottom-20 -right-16 size-64 rounded-full bg-coral" aria-hidden="true"></span>
-    <span class="pointer-events-none absolute bottom-10 left-6 hidden size-28 text-pink sm:block bg-[repeating-linear-gradient(135deg,currentColor_0_2px,transparent_2px_8px)]" aria-hidden="true"></span>
+    <header class="sticky top-0 z-50 flex h-[52px] items-center justify-between bg-[#006A8B] px-5">
+        <a href="struktur.html" class="inline-block shrink-0"><img src="assets/logo.png" alt="TriGym" class="h-[34px] w-auto"></a>
+        <a href="struktur.html" class="font-display rounded-full border-2 border-white px-5 py-[5px] text-[0.95rem] text-white transition-all duration-200 hover:-translate-y-0.5 hover:bg-white hover:text-[#006A8B] focus-visible:outline-3 focus-visible:outline-[#C42B6F]">&larr; Beranda</a>
+    </header>
 
-    <main class="relative w-full max-w-md rounded-custom bg-white p-6 shadow-custom sm:p-10">
-        <a href="struktur.html" class="mb-6 block"><img src="assets/logo.png" alt="TriGym" class="mx-auto h-9 w-auto"></a>
-        <h1 class="text-center text-2xl font-extrabold tracking-tight text-pink">Gabung TriGym hari ini!</h1>
-        <p class="mt-1 text-center text-sm text-muted">Buat akun untuk memulai gaya hidup sehatmu.</p>
+    <main class="grid flex-1 place-items-center px-4 py-10">
+        <div class="w-full max-w-md rounded-[20px] border-2 border-blue-300 bg-[#F1F1F1] p-6 shadow-[0_16px_30px_rgba(0,0,0,0.2)] sm:p-9">
+            <h1 class="font-display text-center text-[2.2rem] leading-tight text-[#C42B6F]">Gabung TriGym Hari Ini</h1>
+            <p class="mt-1 text-center text-sm text-slate-600">Buat akun untuk memulai gaya hidup sehatmu.</p>
 
-        <form action="#" method="POST" class="mt-8 space-y-4">
+            <form action="#" method="POST" class="mt-7 space-y-4">
                 <div class="relative">
-                    <input type="text" id="fullname" name="fullname" placeholder=" " autocomplete="name" required  class="peer w-full rounded-full border-2 border-slate-200 bg-white px-5 pb-2 pt-6 text-sm text-ink placeholder:text-transparent transition-colors focus:border-pink focus:outline-none">
-                    <label for="fullname" class="pointer-events-none absolute left-5 top-1/2 -translate-y-1/2 text-sm text-muted transition-all peer-focus:top-3 peer-focus:translate-y-0 peer-focus:text-[11px] peer-focus:text-pink peer-[:not(:placeholder-shown)]:top-3 peer-[:not(:placeholder-shown)]:translate-y-0 peer-[:not(:placeholder-shown)]:text-[11px]">Nama lengkap</label>
+                    <input type="text" id="fullname" name="fullname" placeholder=" " autocomplete="name" required  class="peer w-full rounded-full border-2 border-slate-200 bg-white px-5 pb-2 pt-6 text-sm text-black placeholder:text-transparent transition-colors focus:border-[#C42B6F] focus:outline-none">
+                    <label for="fullname" class="pointer-events-none absolute left-5 top-1/2 -translate-y-1/2 text-sm text-slate-500 transition-all peer-focus:top-3 peer-focus:translate-y-0 peer-focus:text-[11px] peer-focus:text-[#C42B6F] peer-[:not(:placeholder-shown)]:top-3 peer-[:not(:placeholder-shown)]:translate-y-0 peer-[:not(:placeholder-shown)]:text-[11px]">Nama lengkap</label>
                 </div>
                 <div class="relative">
-                    <input type="email" id="email" name="email" placeholder=" " autocomplete="email" required  class="peer w-full rounded-full border-2 border-slate-200 bg-white px-5 pb-2 pt-6 text-sm text-ink placeholder:text-transparent transition-colors focus:border-pink focus:outline-none">
-                    <label for="email" class="pointer-events-none absolute left-5 top-1/2 -translate-y-1/2 text-sm text-muted transition-all peer-focus:top-3 peer-focus:translate-y-0 peer-focus:text-[11px] peer-focus:text-pink peer-[:not(:placeholder-shown)]:top-3 peer-[:not(:placeholder-shown)]:translate-y-0 peer-[:not(:placeholder-shown)]:text-[11px]">Email</label>
+                    <input type="email" id="email" name="email" placeholder=" " autocomplete="email" required  class="peer w-full rounded-full border-2 border-slate-200 bg-white px-5 pb-2 pt-6 text-sm text-black placeholder:text-transparent transition-colors focus:border-[#C42B6F] focus:outline-none">
+                    <label for="email" class="pointer-events-none absolute left-5 top-1/2 -translate-y-1/2 text-sm text-slate-500 transition-all peer-focus:top-3 peer-focus:translate-y-0 peer-focus:text-[11px] peer-focus:text-[#C42B6F] peer-[:not(:placeholder-shown)]:top-3 peer-[:not(:placeholder-shown)]:translate-y-0 peer-[:not(:placeholder-shown)]:text-[11px]">Email</label>
                 </div>
                 <div class="relative">
-                    <input type="password" id="password" name="password" placeholder=" " autocomplete="new-password" required minlength="8" class="peer w-full rounded-full pr-12 border-2 border-slate-200 bg-white px-5 pb-2 pt-6 text-sm text-ink placeholder:text-transparent transition-colors focus:border-pink focus:outline-none">
-                    <label for="password" class="pointer-events-none absolute left-5 top-1/2 -translate-y-1/2 text-sm text-muted transition-all peer-focus:top-3 peer-focus:translate-y-0 peer-focus:text-[11px] peer-focus:text-pink peer-[:not(:placeholder-shown)]:top-3 peer-[:not(:placeholder-shown)]:translate-y-0 peer-[:not(:placeholder-shown)]:text-[11px]">Password (min. 8 karakter)</label>
-                    <button type="button" data-toggle="password" aria-label="Tampilkan password" class="cursor-pointer absolute inset-y-0 right-0 grid w-12 place-items-center rounded-full text-muted hover:text-pink focus-visible:outline-2 focus-visible:outline-pink">
+                    <input type="password" id="password" name="password" placeholder=" " autocomplete="new-password" required minlength="8" class="peer w-full pr-12 rounded-full border-2 border-slate-200 bg-white px-5 pb-2 pt-6 text-sm text-black placeholder:text-transparent transition-colors focus:border-[#C42B6F] focus:outline-none">
+                    <label for="password" class="pointer-events-none absolute left-5 top-1/2 -translate-y-1/2 text-sm text-slate-500 transition-all peer-focus:top-3 peer-focus:translate-y-0 peer-focus:text-[11px] peer-focus:text-[#C42B6F] peer-[:not(:placeholder-shown)]:top-3 peer-[:not(:placeholder-shown)]:translate-y-0 peer-[:not(:placeholder-shown)]:text-[11px]">Password (min. 8 karakter)</label>
+                    <button type="button" data-toggle="password" aria-label="Tampilkan password" class="absolute inset-y-0 right-0 grid w-12 cursor-pointer place-items-center rounded-full text-slate-500 hover:text-[#C42B6F] focus-visible:outline-3 focus-visible:outline-[#C42B6F]">
                         <svg data-eye="on" xmlns="http://www.w3.org/2000/svg" class="size-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/></svg>
                         <svg data-eye="off" xmlns="http://www.w3.org/2000/svg" class="hidden size-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17.9 17.9A10.9 10.9 0 0 1 12 19c-6.5 0-10-7-10-7a18 18 0 0 1 5.1-5.9M9.9 5.2A9.9 9.9 0 0 1 12 5c6.5 0 10 7 10 7a18 18 0 0 1-2.2 3.2M1 1l22 22"/></svg>
                     </button>
                 </div>
-            <label class="flex cursor-pointer items-start gap-2.5 pt-1 text-xs leading-snug text-muted">
-                <input type="checkbox" required class="mt-0.5 size-4 shrink-0 rounded border-slate-300 accent-pink">
-                <span>Saya menyetujui <a href="#" class="font-semibold text-pink hover:underline">Syarat &amp; Ketentuan</a> dan <a href="#" class="font-semibold text-pink hover:underline">Kebijakan Privasi</a> TriGym.</span>
-            </label>
-            <button type="submit" class="cursor-pointer w-full rounded-full px-4 py-3.5 font-bold text-white shadow-md transition-all duration-200 hover:-translate-y-0.5 focus-visible:outline-3 focus-visible:outline-offset-3 focus-visible:outline-pink bg-coral hover:bg-coral-deep">Daftar</button>
-        </form>
+                <label class="flex cursor-pointer items-start gap-2.5 pt-1 text-xs leading-snug text-slate-600">
+                    <input type="checkbox" required class="mt-0.5 size-4 shrink-0 accent-[#C42B6F]">
+                    <span>Saya menyetujui <a href="#" class="font-semibold text-[#C42B6F] hover:underline">Syarat &amp; Ketentuan</a> dan <a href="#" class="font-semibold text-[#C42B6F] hover:underline">Kebijakan Privasi</a> TriGym.</span>
+                </label>
+                <button type="submit" class="font-display w-full cursor-pointer rounded-full px-6 py-[10px] text-[1.15rem] text-white transition-all duration-200 hover:-translate-y-0.5 focus-visible:outline-3 focus-visible:outline-offset-3 focus-visible:outline-[#C42B6F] bg-[#C42B6F] hover:bg-[#d93a82] hover:shadow-[0_5px_0_#7d1a45]">Daftar</button>
+            </form>
 
-        <div class="my-6 flex items-center gap-3 text-xs text-muted">
-            <span class="h-px flex-1 bg-slate-200"></span>atau<span class="h-px flex-1 bg-slate-200"></span>
+            <div class="my-6 flex items-center gap-3 text-xs text-slate-500">
+                <span class="h-px flex-1 bg-slate-300"></span>atau<span class="h-px flex-1 bg-slate-300"></span>
+            </div>
+
+            <button type="button" class="flex w-full cursor-pointer items-center justify-center gap-3 rounded-full border-2 border-slate-200 bg-white px-4 py-3 text-sm font-semibold transition-colors hover:border-black focus-visible:outline-3 focus-visible:outline-[#C42B6F]">
+                <svg xmlns="http://www.w3.org/2000/svg" class="size-5" viewBox="0 0 24 24"><path fill="#4285F4" d="M23.5 12.27c0-.85-.08-1.67-.22-2.45H12v4.64h6.46a5.52 5.52 0 0 1-2.4 3.62v3h3.88c2.27-2.09 3.56-5.17 3.56-8.81z"/><path fill="#34A853" d="M12 24c3.24 0 5.96-1.07 7.94-2.91l-3.88-3a7.2 7.2 0 0 1-10.7-3.77H1.34v3.1A12 12 0 0 0 12 24z"/><path fill="#FBBC05" d="M5.36 14.32a7.2 7.2 0 0 1 0-4.64v-3.1H1.34a12 12 0 0 0 0 10.84l4.02-3.1z"/><path fill="#EA4335" d="M12 4.77c1.76 0 3.34.6 4.59 1.8l3.44-3.44A11.5 11.5 0 0 0 12 0 12 12 0 0 0 1.34 6.58l4.02 3.1A7.2 7.2 0 0 1 12 4.77z"/></svg>
+                Daftar dengan Google
+            </button>
+
+            <p class="mt-6 text-center text-sm text-slate-600">Sudah punya akun? <a href="signin.html" class="font-semibold text-[#C42B6F] hover:underline">Masuk</a></p>
         </div>
-
-        <button type="button" class="cursor-pointer flex w-full items-center justify-center gap-3 rounded-full border-2 border-slate-200 px-4 py-3 text-sm font-bold transition-colors hover:border-ink focus-visible:outline-2 focus-visible:outline-pink">
-            <svg xmlns="http://www.w3.org/2000/svg" class="size-5" viewBox="0 0 24 24"><path fill="#4285F4" d="M23.5 12.27c0-.85-.08-1.67-.22-2.45H12v4.64h6.46a5.52 5.52 0 0 1-2.4 3.62v3h3.88c2.27-2.09 3.56-5.17 3.56-8.81z"/><path fill="#34A853" d="M12 24c3.24 0 5.96-1.07 7.94-2.91l-3.88-3a7.2 7.2 0 0 1-10.7-3.77H1.34v3.1A12 12 0 0 0 12 24z"/><path fill="#FBBC05" d="M5.36 14.32a7.2 7.2 0 0 1 0-4.64v-3.1H1.34a12 12 0 0 0 0 10.84l4.02-3.1z"/><path fill="#EA4335" d="M12 4.77c1.76 0 3.34.6 4.59 1.8l3.44-3.44A11.5 11.5 0 0 0 12 0 12 12 0 0 0 1.34 6.58l4.02 3.1A7.2 7.2 0 0 1 12 4.77z"/></svg>
-            Daftar dengan Google
-        </button>
-
-        <p class="mt-6 text-center text-sm text-muted">Sudah punya akun? <a href="signin.html" class="font-bold text-pink hover:underline">Masuk</a></p>
     </main>
+
+    <footer class="flex flex-col items-center justify-between gap-4 bg-[#006A8B] px-6 py-6 text-center text-[0.9rem] text-white min-[901px]:flex-row min-[901px]:px-12 min-[901px]:text-left">
+        <p>&copy; 2026 TRIGYM. All Rights Reserved.</p>
+        <ul class="flex gap-[26px]">
+            <li><a href="#" class="hover:underline focus-visible:outline-3 focus-visible:outline-[#C42B6F]">Kebijakan Privasi</a></li>
+            <li><a href="#" class="hover:underline focus-visible:outline-3 focus-visible:outline-[#C42B6F]">Syarat &amp; Ketentuan</a></li>
+        </ul>
+    </footer>
 
     <script>
         document.querySelectorAll("[data-toggle]").forEach(function (btn) {
