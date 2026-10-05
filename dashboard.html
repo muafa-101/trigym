@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth scroll-pt-24">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>TRIGYM - Member Dashboard</title>
+
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Anton&family=Asap:wght@400;500;600&display=swap" rel="stylesheet">
+        <link href="./src/output.css" rel="stylesheet">
+
+        <style>
+            body { font-family: 'Asap', sans-serif; }
+            .font-display { font-family: 'Anton', 'Impact', sans-serif; font-weight: 400; letter-spacing: 0.2px; }
+            body {
+                background-color: #C9EFFA;
+                background-image: url('assets/BACKGROUND.png');
+                background-size: 100% auto;
+                background-position: top center;
+                background-repeat: no-repeat;
+            }
+            summary::-webkit-details-marker { display: none; }
+        </style>
+    </head>
+    <body class="text-black leading-relaxed antialiased min-h-screen flex flex-col">
+
+        <!-- Header -->
+        <header class="sticky top-0 z-50 flex items-center gap-6 px-5 h-[52px] bg-[#006A8B] max-[900px]:h-auto max-[900px]:py-2 max-[900px]:flex-wrap">
+            <a href="struktur.html" class="inline-block shrink-0">
+                <img src="assets/logo.png" alt="TriGym" class="h-[34px] w-auto">
+            </a>
+            <nav class="ml-0 min-[901px]:ml-10 max-[900px]:order-3 max-[900px]:w-full">
+                <ul class="flex items-center gap-8">
+                    <li><a href="#status" class="text-white text-base py-1 hover:underline underline-offset-4 decoration-2 decoration-[#C42B6F] focus-visible:outline-3 focus-visible:outline-[#C42B6F]">Status</a></li>
+                    <li><a href="#kelas" class="text-white text-base py-1 hover:underline underline-offset-4 decoration-2 decoration-[#C42B6F] focus-visible:outline-3 focus-visible:outline-[#C42B6F]">Kelas</a></li>
+                </ul>
+            </nav>
+            <!-- Tombol generate code: paling kanan -->
+            <button id="btn-generate" type="button" class="font-display ml-auto min-w-[150px] px-6 py-[5px] text-[1rem] uppercase text-white bg-black rounded-full cursor-pointer transition-all duration-200 hover:bg-[#C42B6F] hover:-translate-y-0.5 focus-visible:outline-3 focus-visible:outline-[#C42B6F] focus-visible:outline-offset-3">
+                Generate Code
+            </button>
+        </header>
+
+        <!-- Main -->
+        <main class="w-full max-w-[960px] mx-4 min-[1010px]:mx-auto mt-6 mb-12 p-4 min-[901px]:p-5 bg-[#F1F1F1] rounded-[20px] border-[3px] border-[#006A8B] flex flex-col gap-6">
+
+            <!-- Kartu Profil -->
+            <section id="profil" class="border-[4px] border-white rounded-[20px] overflow-hidden bg-white">
+                <div class="bg-[#0090BE] h-[36px] px-5 flex items-center">
+                    <span class="font-display text-white text-[0.85rem] tracking-[2px] uppercase">TriGym Member Card</span>
+                </div>
+                <div class="mt-[6px] bg-[#0090BE] p-5 min-[901px]:p-7 flex flex-col min-[601px]:flex-row gap-5 min-[601px]:gap-6 min-[601px]:items-center">
+                    <img src="assets/profile.jpeg" alt="Foto member" class="aspect-square w-[150px] min-[901px]:w-[200px] shrink-0 object-cover rounded-[20px] bg-black/30">
+                    <div class="flex-1 flex flex-col gap-1 text-white self-stretch justify-between">
+                        <div class="mt-auto">
+                            <h1 class="font-display text-[1.4rem] min-[901px]:text-[2.3rem] leading-[1.05] mb-3">Muhammad Kharisma Aditya Putra</h1>
+                            <p class="font-display text-[1rem] mb-1">ID : 02010602</p>
+                            <p class="font-display text-[1rem] mb-1 break-all">yenderruaditya@gmail.com</p>
+                            <p class="font-display text-[1rem]">Status : <span class="text-[#FBC436]">Monthly Member</span></p>
+                        </div>
+                        <p class="mt-4 text-right text-[0.9rem]">Paket member berlaku hingga 08/1945</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Status Gym + Kelas | Gym-Bud -->
+            <div class="grid grid-cols-1 min-[901px]:grid-cols-[1fr_320px] gap-6 items-start">
+
+                <div class="flex flex-col gap-5">
+
+                    <!-- Status Gym (badge, bukan tombol) -->
+                    <section id="status" class="border-[4px] border-white rounded-[20px] overflow-hidden bg-white transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_12px_24px_rgba(0,0,0,0.25)]">
+                        <div class="bg-[#FF4444] px-6 py-4 flex items-center justify-between gap-4 flex-wrap">
+                            <div class="text-white">
+                                <h2 class="font-display text-[1.7rem] leading-none">Status Gym :</h2>
+                                <p class="font-display text-[0.7rem] mt-2 tracking-wide">19juta orang check in</p>
+                            </div>
+                            <span class="font-display text-[1.5rem] uppercase text-white bg-[#6B2222] rounded-[10px] px-6 py-1 select-none">Ramai</span>
+                        </div>
+                    </section>
+
+                    <!-- Kelas (dropdown) -->
+                    <section id="kelas" class="border-[4px] border-white rounded-[20px] overflow-hidden bg-white transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_12px_24px_rgba(0,0,0,0.25)]">
+                        <details open class="group bg-[#FDDE8F]">
+                            <!-- Kelas yang sedang diikuti = pemicu dropdown -->
+                            <summary class="list-none cursor-pointer bg-[#FBC436] px-5 py-4 flex items-center gap-4 flex-wrap focus-visible:outline-3 focus-visible:outline-[#C42B6F]">
+                                <span class="font-display text-[1.4rem] uppercase text-white bg-[#BF9A3B] rounded-[10px] px-4 py-1.5 leading-tight">Weight Training</span>
+                                <span class="flex-1 min-w-[160px] text-white">
+                                    <span class="font-display text-[1rem] block">Trainer : Abdoel Fatah</span>
+                                    <span class="font-display text-[0.7rem] block">08:00 - 11:00 WIB</span>
+                                    <span class="font-display text-[0.7rem] block">Kelas yang anda ikuti</span>
+                                </span>
+                                <svg class="w-5 h-5 text-white transition-transform duration-200 group-open:rotate-180" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+                            </summary>
+
+                            <!-- Daftar kelas lain -->
+                            <ul class="px-5 py-5 flex flex-col gap-4">
+                                <li class="flex items-center justify-between gap-4">
+                                    <span class="font-display flex-1 max-w-[220px] text-center text-[1.4rem] uppercase text-white bg-[#FBC436] rounded-[10px] px-3 py-2 [text-shadow:0_1px_2px_rgba(0,0,0,0.25)]">Cardio &amp; HIIT</span>
+                                    <button type="button" class="btn-ikuti font-display px-7 py-1.5 text-[1.05rem] uppercase text-white bg-[#FBC436] rounded-full cursor-pointer transition-all duration-200 hover:-translate-y-0.5 hover:bg-[#E5A913] disabled:opacity-70 disabled:cursor-default disabled:hover:translate-y-0 focus-visible:outline-3 focus-visible:outline-[#C42B6F] focus-visible:outline-offset-3 [text-shadow:0_1px_2px_rgba(0,0,0,0.25)]">Ikuti</button>
+                                </li>
+                                <li class="flex items-center justify-between gap-4">
+                                    <span class="font-display flex-1 max-w-[220px] text-center text-[1.4rem] uppercase text-white bg-[#FBC436] rounded-[10px] px-3 py-2 [text-shadow:0_1px_2px_rgba(0,0,0,0.25)]">Zumba</span>
+                                    <button type="button" class="btn-ikuti font-display px-7 py-1.5 text-[1.05rem] uppercase text-white bg-[#FBC436] rounded-full cursor-pointer transition-all duration-200 hover:-translate-y-0.5 hover:bg-[#E5A913] disabled:opacity-70 disabled:cursor-default disabled:hover:translate-y-0 focus-visible:outline-3 focus-visible:outline-[#C42B6F] focus-visible:outline-offset-3 [text-shadow:0_1px_2px_rgba(0,0,0,0.25)]">Ikuti</button>
+                                </li>
+                            </ul>
+                        </details>
+                    </section>
+                </div>
+
+                <!-- Gym-Bud (gambar 1:1) -->
+                <aside class="relative aspect-square w-full rounded-[16px] overflow-hidden border border-[#FF4444] bg-[#E5E5E5] transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_12px_24px_rgba(0,0,0,0.25)]">
+                    <img src="assets/LOWONGAN.png" alt="GYM-BUD" class="w-full h-full object-cover">
+                    <div class="absolute inset-x-0 bottom-0 bg-[#FF4444] text-white text-center px-3 py-2 rounded-t-[10px]">
+                        <p class="font-display text-[1.25rem] leading-tight">GYM-BUD Sedang marah</p>
+                        <p class="font-display text-[0.7rem]">Karna Avatarnya masih bentuk lowongan</p>
+                    </div>
+                </aside>
+            </div>
+
+            <!-- Bagian hijau: ringkasan aktivitas -->
+            <section id="aktivitas" class="border-[4px] border-white rounded-[20px] overflow-hidden bg-white">
+                <div class="bg-[#8DD63F] px-5 py-5 min-[901px]:px-8">
+                    <h2 class="font-display text-[1.4rem] text-white mb-3 uppercase">Aktivitas Bulan Ini</h2>
+                    <div class="grid grid-cols-1 min-[601px]:grid-cols-3 gap-3">
+                        <div class="bg-white/25 rounded-[14px] px-4 py-3 text-white text-center">
+                            <p class="font-display text-[2rem] leading-none">12x</p>
+                            <p class="text-[0.85rem] mt-1">Kunjungan</p>
+                        </div>
+                        <div class="bg-white/25 rounded-[14px] px-4 py-3 text-white text-center">
+                            <p class="font-display text-[2rem] leading-none">5</p>
+                            <p class="text-[0.85rem] mt-1">Kelas diikuti</p>
+                        </div>
+                        <div class="bg-white/25 rounded-[14px] px-4 py-3 text-white text-center">
+                            <p class="font-display text-[2rem] leading-none">24</p>
+                            <p class="text-[0.85rem] mt-1">Hari tersisa</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <!-- Footer -->
+        <footer class="mt-auto flex flex-col min-[901px]:flex-row items-center justify-between flex-wrap gap-3 px-6 py-3 bg-[#006A8B] text-white text-[0.9rem]">
+            <p>&copy; 2026 TRIGYM. All Rights Reserved.</p>
+            <div class="flex items-center gap-4">
+                <span>Dapat Versi Aplikasi di :</span>
+                <a href="#download" class="font-display px-6 py-[5px] text-[1rem] uppercase text-white bg-black rounded-full transition-all duration-200 hover:bg-[#C42B6F] hover:-translate-y-0.5 focus-visible:outline-3 focus-visible:outline-[#C42B6F] focus-visible:outline-offset-3">Download</a>
+            </div>
+        </footer>
+
+        <script>
+            // Generate code: tampilkan kode acak 8 detik lalu kembali ke teks semula
+            const btnGen = document.getElementById("btn-generate");
+            btnGen.addEventListener("click", () => {
+                const code = "TG-" + Math.random().toString(36).slice(2, 7).toUpperCase();
+                btnGen.textContent = code;
+                setTimeout(() => { btnGen.textContent = "Generate Code"; }, 8000);
+            });
+
+            // Tombol Ikuti: berubah jadi "Terdaftar" setelah diklik
+            document.querySelectorAll(".btn-ikuti").forEach((btn) => {
+                btn.addEventListener("click", () => {
+                    btn.textContent = "Terdaftar";
+                    btn.disabled = true;
+                });
+            });
+        </script>
+    </body>
+</html>
