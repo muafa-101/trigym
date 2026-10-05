@@ -34,13 +34,16 @@
             <h1 class="font-display text-center text-[2.2rem] leading-tight text-[#C42B6F]">Selamat Datang Kembali</h1>
             <p class="mt-1 text-center text-sm text-slate-600">Masuk untuk melanjutkan sesi latihanmu.</p>
 
-            <form action="#" method="POST" class="mt-7 space-y-4">
+            <!-- Kotak Notifikasi Error -->
+            <div id="error-message" class="hidden mt-4 rounded-xl border border-red-300 bg-red-100 p-3 text-center text-xs font-semibold text-red-600"></div>
+
+            <form id="login-form" class="mt-5 space-y-4">
                 <div class="relative">
-                    <input type="email" id="email" name="email" placeholder=" " autocomplete="email" required  class="peer w-full rounded-full border-2 border-slate-200 bg-white px-5 pb-2 pt-6 text-sm text-black placeholder:text-transparent transition-colors focus:border-[#C42B6F] focus:outline-none">
+                    <input type="email" id="email" name="email" placeholder=" " autocomplete="email" required class="peer w-full rounded-full border-2 border-slate-200 bg-white px-5 pb-2 pt-6 text-sm text-black placeholder:text-transparent transition-colors focus:border-[#C42B6F] focus:outline-none">
                     <label for="email" class="pointer-events-none absolute left-5 top-1/2 -translate-y-1/2 text-sm text-slate-500 transition-all peer-focus:top-3 peer-focus:translate-y-0 peer-focus:text-[11px] peer-focus:text-[#C42B6F] peer-[:not(:placeholder-shown)]:top-3 peer-[:not(:placeholder-shown)]:translate-y-0 peer-[:not(:placeholder-shown)]:text-[11px]">Email</label>
                 </div>
                 <div class="relative">
-                    <input type="password" id="password" name="password" placeholder=" " autocomplete="current-password" required minlength="8" class="peer w-full pr-12 rounded-full border-2 border-slate-200 bg-white px-5 pb-2 pt-6 text-sm text-black placeholder:text-transparent transition-colors focus:border-[#C42B6F] focus:outline-none">
+                    <input type="password" id="password" name="password" placeholder=" " autocomplete="current-password" required minlength="4" class="peer w-full pr-12 rounded-full border-2 border-slate-200 bg-white px-5 pb-2 pt-6 text-sm text-black placeholder:text-transparent transition-colors focus:border-[#C42B6F] focus:outline-none">
                     <label for="password" class="pointer-events-none absolute left-5 top-1/2 -translate-y-1/2 text-sm text-slate-500 transition-all peer-focus:top-3 peer-focus:translate-y-0 peer-focus:text-[11px] peer-focus:text-[#C42B6F] peer-[:not(:placeholder-shown)]:top-3 peer-[:not(:placeholder-shown)]:translate-y-0 peer-[:not(:placeholder-shown)]:text-[11px]">Password</label>
                     <button type="button" data-toggle="password" aria-label="Tampilkan password" class="absolute inset-y-0 right-0 grid w-12 cursor-pointer place-items-center rounded-full text-slate-500 hover:text-[#C42B6F] focus-visible:outline-3 focus-visible:outline-[#C42B6F]">
                         <svg data-eye="on" xmlns="http://www.w3.org/2000/svg" class="size-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/></svg>
@@ -51,7 +54,7 @@
                     <label class="flex cursor-pointer items-center gap-2 text-slate-600"><input type="checkbox" name="remember" class="size-4 accent-[#C42B6F]">Ingat saya</label>
                     <a href="#" class="font-semibold text-[#C42B6F] hover:underline">Lupa password?</a>
                 </div>
-                <button type="button" onclick="window.location.href='dashboard.html'" class="font-display w-full cursor-pointer rounded-full px-6 py-[10px] text-[1.15rem] text-white transition-all duration-200 hover:-translate-y-0.5 focus-visible:outline-3 focus-visible:outline-offset-3 focus-visible:outline-[#C42B6F] bg-black hover:bg-[#C42B6F]">Masuk</button>
+                <button type="submit" id="btn-submit" class="font-display w-full cursor-pointer rounded-full px-6 py-[10px] text-[1.15rem] text-white transition-all duration-200 hover:-translate-y-0.5 focus-visible:outline-3 focus-visible:outline-offset-3 focus-visible:outline-[#C42B6F] bg-black hover:bg-[#C42B6F]">Masuk</button>
             </form>
 
             <div class="my-6 flex items-center gap-3 text-xs text-slate-500">
@@ -84,6 +87,52 @@
                 btn.querySelector('[data-eye="on"]').classList.toggle("hidden", show);
                 btn.querySelector('[data-eye="off"]').classList.toggle("hidden", !show);
             });
+        });
+
+        // Script Autentikasi JSON
+        const loginForm = document.getElementById("login-form");
+        const errorMessage = document.getElementById("error-message");
+        const btnSubmit = document.getElementById("btn-submit");
+
+        loginForm.addEventListener("submit", async function (event) {
+            event.preventDefault();
+
+            const emailInput = document.getElementById("email").value.trim();
+            const passwordInput = document.getElementById("password").value;
+
+            errorMessage.classList.add("hidden");
+            btnSubmit.textContent = "Memproses...";
+            btnSubmit.disabled = true;
+
+            try {
+                const response = await fetch("data/user.json");
+                
+                if (!response.ok) {
+                    throw new Error("Gagal memuat file JSON");
+                }
+
+                const users = await response.json();
+
+                const matchedUser = users.find(
+                    (user) => user.Email === emailInput && user.Password === passwordInput
+                );
+
+                if (matchedUser) {
+                    localStorage.setItem("userSession", JSON.stringify(matchedUser));
+                    window.location.href = "dashboard.html";
+                } else {
+                    errorMessage.textContent = "Email atau Password salah!";
+                    errorMessage.classList.remove("hidden");
+                }
+
+            } catch (error) {
+                console.error(error);
+                errorMessage.textContent = "Terjadi kesalahan saat membaca data/user.json";
+                errorMessage.classList.remove("hidden");
+            } finally {
+                btnSubmit.textContent = "Masuk";
+                btnSubmit.disabled = false;
+            }
         });
     </script>
 </body>

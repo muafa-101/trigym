@@ -36,7 +36,6 @@
                     <li><a href="#kelas" class="text-white text-base py-1 hover:underline underline-offset-4 decoration-2 decoration-[#C42B6F] focus-visible:outline-3 focus-visible:outline-[#C42B6F]">Kelas</a></li>
                 </ul>
             </nav>
-            <!-- Tombol generate code: paling kanan -->
             <button id="btn-generate" type="button" class="font-display ml-auto min-w-[150px] px-6 py-[5px] text-[1rem] uppercase text-white bg-black rounded-full cursor-pointer transition-all duration-200 hover:bg-[#C42B6F] hover:-translate-y-0.5 focus-visible:outline-3 focus-visible:outline-[#C42B6F] focus-visible:outline-offset-3">
                 Generate Code
             </button>
@@ -51,13 +50,14 @@
                     <span class="font-display text-white text-[0.85rem] tracking-[2px] uppercase">TriGym Member Card</span>
                 </div>
                 <div class="mt-[6px] bg-[#0090BE] p-5 min-[901px]:p-7 flex flex-col min-[601px]:flex-row gap-5 min-[601px]:gap-6 min-[601px]:items-center">
-                    <img src="assets/.jpeg" alt="Foto member" class="aspect-square w-[150px] min-[901px]:w-[200px] shrink-0 object-cover rounded-[20px] bg-black/30">
+                    <img id="user-photo" src="assets/1.jpeg" alt="Foto member" class="aspect-square w-[150px] min-[901px]:w-[200px] shrink-0 object-cover rounded-[20px] bg-black/30">
+                    
                     <div class="flex-1 flex flex-col gap-1 text-white self-stretch justify-between">
                         <div class="mt-auto">
-                            <h1 class="font-display text-[1.4rem] min-[901px]:text-[2.3rem] leading-[1.05] mb-3">Muhammad Kharisma Aditya Putra</h1>
-                            <p class="font-display text-[1rem] mb-1">ID : 02010602</p>
-                            <p class="font-display text-[1rem] mb-1 break-all">yenderruaditya@gmail.com</p>
-                            <p class="font-display text-[1rem]">Status : <span class="text-[#FBC436]">Monthly Member</span></p>
+                            <h1 id="user-name" class="font-display text-[1.4rem] min-[901px]:text-[2.3rem] leading-[1.05] mb-3">Nama Member</h1>
+                            <p id="user-id" class="font-display text-[1rem] mb-1">ID : -</p>
+                            <p id="user-email" class="font-display text-[1rem] mb-1 break-all">Email : -</p>
+                            <p class="font-display text-[1rem]">Status : <span id="user-status" class="text-[#FBC436]">-</span></p>
                         </div>
                         <p class="mt-4 text-right text-[0.9rem]">Paket member berlaku hingga 08/1945</p>
                     </div>
@@ -69,7 +69,6 @@
 
                 <div class="flex flex-col gap-5">
 
-                    <!-- Status Gym (badge, bukan tombol) -->
                     <section id="status" class="border-[4px] border-white rounded-[20px] overflow-hidden bg-white transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_12px_24px_rgba(0,0,0,0.25)]">
                         <div class="bg-[#FF4444] px-6 py-4 flex items-center justify-between gap-4 flex-wrap">
                             <div class="text-white">
@@ -80,10 +79,8 @@
                         </div>
                     </section>
 
-                    <!-- Kelas (dropdown) -->
                     <section id="kelas" class="border-[4px] border-white rounded-[20px] overflow-hidden bg-white transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_12px_24px_rgba(0,0,0,0.25)]">
                         <details open class="group bg-[#FDDE8F]">
-                            <!-- Kelas yang sedang diikuti = pemicu dropdown -->
                             <summary class="list-none cursor-pointer bg-[#FBC436] px-5 py-4 flex items-center gap-4 flex-wrap focus-visible:outline-3 focus-visible:outline-[#C42B6F]">
                                 <span class="font-display text-[1.4rem] uppercase text-white bg-[#BF9A3B] rounded-[10px] px-4 py-1.5 leading-tight">Weight Training</span>
                                 <span class="flex-1 min-w-[160px] text-white">
@@ -94,29 +91,22 @@
                                 <svg class="w-5 h-5 text-white transition-transform duration-200 group-open:rotate-180" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
                             </summary>
 
-                            <!-- Daftar kelas lain -->
                             <ul class="px-5 py-5 flex flex-col gap-4">
                                 <li class="flex items-center gap-4">
                                     <span class="font-display w-[190px] shrink-0 text-center text-[1.4rem] uppercase text-white bg-[#FBC436] rounded-[10px] px-3 py-2 [text-shadow:0_1px_2px_rgba(0,0,0,0.25)]">Cardio &amp; HIIT</span>
-
-                                    <!-- Jadwal kelas -->
                                     <div class="flex-1 min-w-[110px] text-[#5A4100]">
                                         <p class="font-display text-[1rem] leading-tight text-white">Senin &amp; Kamis</p>
                                         <p class="font-display text-[0.75rem] leading-tight text-white">16:00 - 17:00 WIB</p>
                                     </div>
-
                                     <button type="button" class="btn-ikuti shrink-0 font-display px-7 py-1.5 text-[1.05rem] uppercase text-white bg-[#FBC436] rounded-full cursor-pointer transition-all duration-200 hover:-translate-y-0.5 hover:bg-[#E5A913] disabled:opacity-70 disabled:cursor-default disabled:hover:translate-y-0 focus-visible:outline-3 focus-visible:outline-[#C42B6F] focus-visible:outline-offset-3 [text-shadow:0_1px_2px_rgba(0,0,0,0.25)]">Ikuti</button>
                                 </li>
 
                                 <li class="flex items-center gap-4">
                                     <span class="font-display w-[190px] shrink-0 text-center text-[1.4rem] uppercase text-white bg-[#FBC436] rounded-[10px] px-3 py-2 [text-shadow:0_1px_2px_rgba(0,0,0,0.25)]">Zumba</span>
-
-                                    <!-- Jadwal kelas -->
                                     <div class="flex-1 min-w-[110px] text-[#5A4100]">
                                         <p class="font-display text-[1rem] leading-tight text-white">Rabu &amp; Sabtu</p>
                                         <p class="font-display text-[0.75rem] leading-tight text-white">18:30 - 19:30 WIB</p>
                                     </div>
-
                                     <button type="button" class="btn-ikuti shrink-0 font-display px-7 py-1.5 text-[1.05rem] uppercase text-white bg-[#FBC436] rounded-full cursor-pointer transition-all duration-200 hover:-translate-y-0.5 hover:bg-[#E5A913] disabled:opacity-70 disabled:cursor-default disabled:hover:translate-y-0 focus-visible:outline-3 focus-visible:outline-[#C42B6F] focus-visible:outline-offset-3 [text-shadow:0_1px_2px_rgba(0,0,0,0.25)]">Ikuti</button>
                                 </li>
                             </ul>
@@ -124,7 +114,6 @@
                     </section>
                 </div>
 
-                <!-- Gym-Bud (gambar 1:1) -->
                 <aside class="relative aspect-square w-full rounded-[16px] overflow-hidden border border-[#FF4444] bg-[#E5E5E5] transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_12px_24px_rgba(0,0,0,0.25)]">
                     <img src="assets/LOWONGAN.png" alt="GYM-BUD" class="w-full h-full object-cover">
                     <div class="absolute inset-x-0 bottom-0 bg-[#FF4444] text-white text-center px-3 py-2 rounded-t-[10px]">
@@ -134,7 +123,6 @@
                 </aside>
             </div>
 
-            <!-- Bagian hijau: ringkasan aktivitas -->
             <section id="aktivitas" class="border-[4px] border-white rounded-[20px] overflow-hidden bg-white">
                 <div class="bg-[#8DD63F] px-5 py-5 min-[901px]:px-8">
                     <h2 class="font-display text-[1.4rem] text-white mb-3 uppercase">Aktivitas Bulan Ini</h2>
@@ -166,7 +154,25 @@
         </footer>
 
         <script>
-            // Generate code: tampilkan kode acak 8 detik lalu kembali ke teks semula
+            // Populate Data Profil dari localStorage
+            document.addEventListener("DOMContentLoaded", () => {
+                const savedUser = localStorage.getItem("userSession");
+
+                if (!savedUser) {
+                    window.location.href = "signin.html";
+                    return;
+                }
+
+                const user = JSON.parse(savedUser);
+
+                document.getElementById("user-name").textContent = user.name;
+                document.getElementById("user-id").textContent = "ID : " + user.id;
+                document.getElementById("user-email").textContent = user.Email;
+                document.getElementById("user-status").textContent = user.Status;
+                document.getElementById("user-photo").src = user.photo;
+            });
+
+            // Generate Code
             const btnGen = document.getElementById("btn-generate");
             btnGen.addEventListener("click", () => {
                 const code = "TG-" + Math.random().toString(36).slice(2, 7).toUpperCase();
@@ -174,7 +180,7 @@
                 setTimeout(() => { btnGen.textContent = "Generate Code"; }, 8000);
             });
 
-            // Tombol Ikuti: berubah jadi "Terdaftar" setelah diklik
+            // Tombol Ikuti
             document.querySelectorAll(".btn-ikuti").forEach((btn) => {
                 btn.addEventListener("click", () => {
                     btn.textContent = "Terdaftar";
