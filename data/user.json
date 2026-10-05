@@ -1,0 +1,18 @@
+[
+    {
+        "id" : "02010602",
+        "name" : "Muhammad Kharisma Aditya Putra",
+        "Email" : "yenderruaditya@gmail.com",
+        "Status" : "Monthly Member",
+        "photo" : "assets/1.jpeg",
+        "Password" : "ireng123"
+    },
+    {
+        "id" : "177015",
+        "name" : "Fatah jadi Member dulu",
+        "Email" : "gaktauinicumademo@gmail.com",
+        "Status" : "Monthly Member",
+        "photo" : "assets/2.jpeg",
+        "Password" : "123ireng"
+    }
+]
