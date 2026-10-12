@@ -155,38 +155,33 @@
 
         <script>
             // Populate Data Profil dari localStorage
-            document.addEventListener("DOMContentLoaded", () => {
-                const savedUser = localStorage.getItem("userSession");
+            // document.addEventListener("DOMContentLoaded", () => {
+            //     const savedUser = localStorage.getItem("userSession");
 
-                if (!savedUser) {
-                    window.location.href = "signin.html";
-                    return;
-                }
+            //     const user = JSON.parse(savedUser);
 
-                const user = JSON.parse(savedUser);
+            //     document.getElementById("user-name").textContent = user.name;
+            //     document.getElementById("user-id").textContent = "ID : " + user.id;
+            //     document.getElementById("user-email").textContent = user.Email;
+            //     document.getElementById("user-status").textContent = user.Status;
+            //     document.getElementById("user-photo").src = user.photo;
+            // });
 
-                document.getElementById("user-name").textContent = user.name;
-                document.getElementById("user-id").textContent = "ID : " + user.id;
-                document.getElementById("user-email").textContent = user.Email;
-                document.getElementById("user-status").textContent = user.Status;
-                document.getElementById("user-photo").src = user.photo;
-            });
+            // // Generate Code
+            // const btnGen = document.getElementById("btn-generate");
+            // btnGen.addEventListener("click", () => {
+            //     const code = "TG-" + Math.random().toString(36).slice(2, 7).toUpperCase();
+            //     btnGen.textContent = code;
+            //     setTimeout(() => { btnGen.textContent = "Generate Code"; }, 8000);
+            // });
 
-            // Generate Code
-            const btnGen = document.getElementById("btn-generate");
-            btnGen.addEventListener("click", () => {
-                const code = "TG-" + Math.random().toString(36).slice(2, 7).toUpperCase();
-                btnGen.textContent = code;
-                setTimeout(() => { btnGen.textContent = "Generate Code"; }, 8000);
-            });
-
-            // Tombol Ikuti
-            document.querySelectorAll(".btn-ikuti").forEach((btn) => {
-                btn.addEventListener("click", () => {
-                    btn.textContent = "Terdaftar";
-                    btn.disabled = true;
-                });
-            });
+            // // Tombol Ikuti
+            // document.querySelectorAll(".btn-ikuti").forEach((btn) => {
+            //     btn.addEventListener("click", () => {
+            //         btn.textContent = "Terdaftar";
+            //         btn.disabled = true;
+            //     });
+            // });
         </script>
     </body>
 </html>

@@ -1,3 +1,22 @@
+<?php
+$email = "admin@gmail.com";
+$password = "68eacb97d86f0c4621fa2b0e17cabd8c"; //Test123
+
+$error = false;
+
+if($_SERVER["REQUEST_METHOD"] == "POST") {
+    $inputEmail = $_POST["email"];
+    $inputPassword = $_POST["password"];
+
+    if($inputEmail === $email && md5($inputPassword) === $password) {
+        header("Location: dashboard.html");
+        exit();
+    } else {
+        $error = true;
+    }
+}
+?>
+
 <!DOCTYPE html>
 <html lang="id">
 <head>
@@ -35,9 +54,11 @@
             <p class="mt-1 text-center text-sm text-slate-600">Masuk untuk melanjutkan sesi latihanmu.</p>
 
             <!-- Kotak Notifikasi Error -->
-            <div id="error-message" class="hidden mt-4 rounded-xl border border-red-300 bg-red-100 p-3 text-center text-xs font-semibold text-red-600"></div>
+            <?php if($error): ?>
+                <div id="error-message" class="mt-4 rounded-xl border border-red-300 bg-red-100 p-3 text-center text-xs font-semibold text-red-600">Email atau password salah.</div>
+            <?php endif; ?>
 
-            <form id="login-form" class="mt-5 space-y-4">
+            <form method="POST" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" id="login-form" class="mt-5 space-y-4">
                 <div class="relative">
                     <input type="email" id="email" name="email" placeholder=" " autocomplete="email" required class="peer w-full rounded-full border-2 border-slate-200 bg-white px-5 pb-2 pt-6 text-sm text-black placeholder:text-transparent transition-colors focus:border-[#C42B6F] focus:outline-none">
                     <label for="email" class="pointer-events-none absolute left-5 top-1/2 -translate-y-1/2 text-sm text-slate-500 transition-all peer-focus:top-3 peer-focus:translate-y-0 peer-focus:text-[11px] peer-focus:text-[#C42B6F] peer-[:not(:placeholder-shown)]:top-3 peer-[:not(:placeholder-shown)]:translate-y-0 peer-[:not(:placeholder-shown)]:text-[11px]">Email</label>
@@ -94,46 +115,46 @@
         const errorMessage = document.getElementById("error-message");
         const btnSubmit = document.getElementById("btn-submit");
 
-        loginForm.addEventListener("submit", async function (event) {
-            event.preventDefault();
+        // loginForm.addEventListener("submit", async function (event) {
+        //     event.preventDefault();
 
-            const emailInput = document.getElementById("email").value.trim();
-            const passwordInput = document.getElementById("password").value;
+        //     const emailInput = document.getElementById("email").value.trim();
+        //     const passwordInput = document.getElementById("password").value;
 
-            errorMessage.classList.add("hidden");
-            btnSubmit.textContent = "Memproses...";
-            btnSubmit.disabled = true;
+        //     errorMessage.classList.add("hidden");
+        //     btnSubmit.textContent = "Memproses...";
+        //     btnSubmit.disabled = true;
 
-            try {
-                const response = await fetch("data/user.json");
+        //     try {
+        //         const response = await fetch("data/user.json");
                 
-                if (!response.ok) {
-                    throw new Error("Gagal memuat file JSON");
-                }
+        //         if (!response.ok) {
+        //             throw new Error("Gagal memuat file JSON");
+        //         }
 
-                const users = await response.json();
+        //         const users = await response.json();
 
-                const matchedUser = users.find(
-                    (user) => user.Email === emailInput && user.Password === passwordInput
-                );
+        //         const matchedUser = users.find(
+        //             (user) => user.Email === emailInput && user.Password === passwordInput
+        //         );
 
-                if (matchedUser) {
-                    localStorage.setItem("userSession", JSON.stringify(matchedUser));
-                    window.location.href = "dashboard.html";
-                } else {
-                    errorMessage.textContent = "Email atau Password salah!";
-                    errorMessage.classList.remove("hidden");
-                }
+        //         if (matchedUser) {
+        //             localStorage.setItem("userSession", JSON.stringify(matchedUser));
+        //             window.location.href = "dashboard.html";
+        //         } else {
+        //             errorMessage.textContent = "Email atau Password salah!";
+        //             errorMessage.classList.remove("hidden");
+        //         }
 
-            } catch (error) {
-                console.error(error);
-                errorMessage.textContent = "Terjadi kesalahan saat membaca data/user.json";
-                errorMessage.classList.remove("hidden");
-            } finally {
-                btnSubmit.textContent = "Masuk";
-                btnSubmit.disabled = false;
-            }
-        });
+        //     } catch (error) {
+        //         console.error(error);
+        //         errorMessage.textContent = "Terjadi kesalahan saat membaca data/user.json";
+        //         errorMessage.classList.remove("hidden");
+        //     } finally {
+        //         btnSubmit.textContent = "Masuk";
+        //         btnSubmit.disabled = false;
+        //     }
+        // });
     </script>
 </body>
 </html>
