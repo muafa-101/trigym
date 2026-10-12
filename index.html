@@ -166,34 +166,8 @@
         </ul>
     </footer>
 
-    <script>
-        let copyrightMode = [
-            "Tempat latihan yang lengkap, bersih, dan nyaman. Alat modern, pelatih berpengalaman, dan jadwal kelas yang fleksibel untuk semua level.",
-            "Liat paket dan join sekarang!"
-        ]
-        let copyrightFlag = 0;
-        const copyrightDom = document.getElementById("copyright");
+    //import js
+    <script src="js/main.js"></script>
 
-        setInterval(() => {
-            if(copyrightFlag === 0) {
-                copyrightFlag = 1
-            } else {
-                copyrightFlag = 0;
-            }
-
-            copyrightDom.textContent = copyrightMode[copyrightFlag];
-        }, 3000)
-
-        const paket1 = document.getElementById("paket-1");
-        const paket2 = document.getElementById("paket-2");
-
-        paket1.addEventListener("click", function () {
-            alert("Test");
-        })
-
-        paket2.addEventListener("click", function () {
-            alert("Test");
-        })
-    </script>
 </body>
 </html>

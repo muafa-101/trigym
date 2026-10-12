@@ -1,23 +1,20 @@
 {
   "name": "trigym",
   "version": "1.0.0",
-  "description": "",
+  "description": "Aplikasi Web Gym Management - TriGym",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "npx @tailwindcss/cli -i ./src/main.css -o ./src/output.css --watch",
+    "build": "npx @tailwindcss/cli -i ./src/main.css -o ./src/output.css --minify"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/muafa-101/trigym.git"
   },
   "keywords": [],
-  "author": "",
+  "author": "Muhamad Abdul Fatah",
   "license": "ISC",
   "type": "commonjs",
-  "bugs": {
-    "url": "https://github.com/muafa-101/trigym/issues"
-  },
-  "homepage": "https://github.com/muafa-101/trigym#readme",
   "dependencies": {
     "@tailwindcss/cli": "^4.3.3",
     "tailwindcss": "^4.3.3"
