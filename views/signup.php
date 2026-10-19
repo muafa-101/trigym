@@ -1,0 +1,62 @@
+<?php
+/**
+ * @var array<string, string> $errors
+ * @var array<string, string> $old
+ * @var int $packageId
+ */
+$labelClass = 'pointer-events-none absolute left-5 top-1/2 -translate-y-1/2 text-sm text-slate-500 transition-all peer-focus:top-3 peer-focus:translate-y-0 peer-focus:text-[11px] peer-focus:text-[#C42B6F] peer-[:not(:placeholder-shown)]:top-3 peer-[:not(:placeholder-shown)]:translate-y-0 peer-[:not(:placeholder-shown)]:text-[11px]';
+?>
+<main class="grid flex-1 place-items-center px-4 py-10">
+    <div class="w-full max-w-md rounded-[20px] border-2 border-blue-300 bg-[#F1F1F1] p-6 shadow-[0_16px_30px_rgba(0,0,0,0.2)] sm:p-9">
+        <h1 class="font-display text-center text-[2.2rem] leading-tight text-[#C42B6F]">Gabung TriGym Hari Ini</h1>
+        <p class="mt-1 text-center text-sm text-slate-600">Buat akun untuk memulai gaya hidup sehatmu.</p>
+
+        <?php if ($errors !== []): ?>
+            <div class="mt-5 rounded-[14px] border-2 border-[#FF4444] bg-white px-4 py-3 text-sm text-[#B42318]" role="alert">
+                <ul class="list-disc pl-5">
+                    <?php foreach ($errors as $message): ?>
+                        <li><?= e($message) ?></li>
+                    <?php endforeach; ?>
+                </ul>
+            </div>
+        <?php endif; ?>
+
+        <form action="signup.php" method="POST" class="mt-7 space-y-4">
+            <?= csrf_field() ?>
+            <input type="hidden" name="package_id" value="<?= (int) $packageId ?>">
+
+            <div class="relative">
+                <input type="text" id="fullname" name="fullname" value="<?= e($old['fullname'] ?? '') ?>" placeholder=" " autocomplete="name" required class="peer w-full rounded-full border-2 border-slate-200 bg-white px-5 pb-2 pt-6 text-sm text-black placeholder:text-transparent transition-colors focus:border-[#C42B6F] focus:outline-none">
+                <label for="fullname" class="<?= $labelClass ?>">Nama lengkap</label>
+            </div>
+            <div class="relative">
+                <input type="email" id="email" name="email" value="<?= e($old['email'] ?? '') ?>" placeholder=" " autocomplete="email" required class="peer w-full rounded-full border-2 border-slate-200 bg-white px-5 pb-2 pt-6 text-sm text-black placeholder:text-transparent transition-colors focus:border-[#C42B6F] focus:outline-none">
+                <label for="email" class="<?= $labelClass ?>">Email</label>
+            </div>
+            <div class="relative">
+                <input type="password" id="password" name="password" placeholder=" " autocomplete="new-password" required minlength="8" class="peer w-full pr-12 rounded-full border-2 border-slate-200 bg-white px-5 pb-2 pt-6 text-sm text-black placeholder:text-transparent transition-colors focus:border-[#C42B6F] focus:outline-none">
+                <label for="password" class="<?= $labelClass ?>">Password (min. 8 karakter)</label>
+                <button type="button" data-toggle="password" aria-label="Tampilkan password" class="absolute inset-y-0 right-0 grid w-12 cursor-pointer place-items-center rounded-full text-slate-500 hover:text-[#C42B6F] focus-visible:outline-3 focus-visible:outline-[#C42B6F]">
+                    <svg data-eye="on" xmlns="http://www.w3.org/2000/svg" class="size-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/></svg>
+                    <svg data-eye="off" xmlns="http://www.w3.org/2000/svg" class="hidden size-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17.9 17.9A10.9 10.9 0 0 1 12 19c-6.5 0-10-7-10-7a18 18 0 0 1 5.1-5.9M9.9 5.2A9.9 9.9 0 0 1 12 5c6.5 0 10 7 10 7a18 18 0 0 1-2.2 3.2M1 1l22 22"/></svg>
+                </button>
+            </div>
+            <label class="flex cursor-pointer items-start gap-2.5 pt-1 text-xs leading-snug text-slate-600">
+                <input type="checkbox" name="terms" value="1" required class="mt-0.5 size-4 shrink-0 accent-[#C42B6F]">
+                <span>Saya menyetujui <a href="#" class="font-semibold text-[#C42B6F] hover:underline">Syarat &amp; Ketentuan</a> dan <a href="#" class="font-semibold text-[#C42B6F] hover:underline">Kebijakan Privasi</a> TriGym.</span>
+            </label>
+            <button type="submit" class="font-display w-full cursor-pointer rounded-full px-6 py-[10px] text-[1.15rem] text-white transition-all duration-200 hover:-translate-y-0.5 focus-visible:outline-3 focus-visible:outline-offset-3 focus-visible:outline-[#C42B6F] bg-[#C42B6F] hover:bg-[#d93a82] hover:shadow-[0_5px_0_#7d1a45]">Daftar</button>
+        </form>
+
+        <div class="my-6 flex items-center gap-3 text-xs text-slate-500">
+            <span class="h-px flex-1 bg-slate-300"></span>atau<span class="h-px flex-1 bg-slate-300"></span>
+        </div>
+
+        <button type="button" class="flex w-full cursor-pointer items-center justify-center gap-3 rounded-full border-2 border-slate-200 bg-white px-4 py-3 text-sm font-semibold transition-colors hover:border-black focus-visible:outline-3 focus-visible:outline-[#C42B6F]">
+            <svg xmlns="http://www.w3.org/2000/svg" class="size-5" viewBox="0 0 24 24"><path fill="#4285F4" d="M23.5 12.27c0-.85-.08-1.67-.22-2.45H12v4.64h6.46a5.52 5.52 0 0 1-2.4 3.62v3h3.88c2.27-2.09 3.56-5.17 3.56-8.81z"/><path fill="#34A853" d="M12 24c3.24 0 5.96-1.07 7.94-2.91l-3.88-3a7.2 7.2 0 0 1-10.7-3.77H1.34v3.1A12 12 0 0 0 12 24z"/><path fill="#FBBC05" d="M5.36 14.32a7.2 7.2 0 0 1 0-4.64v-3.1H1.34a12 12 0 0 0 0 10.84l4.02-3.1z"/><path fill="#EA4335" d="M12 4.77c1.76 0 3.34.6 4.59 1.8l3.44-3.44A11.5 11.5 0 0 0 12 0 12 12 0 0 0 1.34 6.58l4.02 3.1A7.2 7.2 0 0 1 12 4.77z"/></svg>
+            Daftar dengan Google
+        </button>
+
+        <p class="mt-6 text-center text-sm text-slate-600">Sudah punya akun? <a href="signin.php" class="font-semibold text-[#C42B6F] hover:underline">Masuk</a></p>
+    </div>
+</main>
