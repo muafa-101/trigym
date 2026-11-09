@@ -4,8 +4,9 @@
     </a>
     <nav class="ml-0 min-[901px]:ml-10 max-[900px]:order-3 max-[900px]:w-full">
         <ul class="flex items-center gap-8">
-            <li><a href="#status" class="text-white text-base py-1 hover:underline underline-offset-4 decoration-2 decoration-[#C42B6F] focus-visible:outline-3 focus-visible:outline-[#C42B6F]">Status</a></li>
-            <li><a href="#kelas" class="text-white text-base py-1 hover:underline underline-offset-4 decoration-2 decoration-[#C42B6F] focus-visible:outline-3 focus-visible:outline-[#C42B6F]">Kelas</a></li>
+            <li><a href="dashboard.php#status" class="text-white text-base py-1 hover:underline underline-offset-4 decoration-2 decoration-[#C42B6F] focus-visible:outline-3 focus-visible:outline-[#C42B6F]">Status</a></li>
+            <li><a href="dashboard.php#kelas" class="text-white text-base py-1 hover:underline underline-offset-4 decoration-2 decoration-[#C42B6F] focus-visible:outline-3 focus-visible:outline-[#C42B6F]">Kelas</a></li>
+            <li><a href="programs.php" class="text-white text-base py-1 hover:underline underline-offset-4 decoration-2 decoration-[#FBC436] focus-visible:outline-3 focus-visible:outline-[#FBC436]">Program</a></li>
         </ul>
     </nav>
     <div class="ml-auto flex items-center gap-3">
