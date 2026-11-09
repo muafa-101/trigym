@@ -38,6 +38,28 @@ final class Database
         if ((int) $pdo->query('SELECT COUNT(*) FROM classes')->fetchColumn() === 0) {
             self::seed($pdo);
         }
+
+        // Seed programs jika tabel masih kosong (jalankan terpisah agar
+        // tidak terikat kondisi tabel classes).
+        if ((int) $pdo->query('SELECT COUNT(*) FROM programs')->fetchColumn() === 0) {
+            self::seedPrograms($pdo);
+        }
+    }
+
+    private static function seedPrograms(PDO $pdo): void
+    {
+        $now  = (new \DateTimeImmutable())->format('Y-m-d H:i:s');
+        $stmt = $pdo->prepare(
+            'INSERT INTO programs (nama, deskripsi, created_at, updated_at) VALUES (?, ?, ?, ?)'
+        );
+        foreach ([
+            ['Pembentukan Otot', 'Program latihan beban terstruktur untuk membangun massa otot secara bertahap dengan panduan trainer berpengalaman.'],
+            ['Penurunan Berat Badan', 'Kombinasi cardio, HIIT, dan diet coaching untuk membantu anggota mencapai berat badan ideal secara sehat.'],
+            ['Kebugaran Umum', 'Program komprehensif untuk meningkatkan stamina, fleksibilitas, dan kesehatan tubuh secara menyeluruh.'],
+            ['Rehabilitasi & Recovery', 'Program khusus pemulihan cedera dengan latihan ringan dan terapi gerak yang dipandu fisioterapis.'],
+        ] as [$nama, $deskripsi]) {
+            $stmt->execute([$nama, $deskripsi, $now, $now]);
+        }
     }
 
     private static function seed(PDO $pdo): void
