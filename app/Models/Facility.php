@@ -1,21 +1,16 @@
 <?php
 
-declare(strict_types=1);
+namespace App\Models;
 
-namespace TriGym\Models;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
 
-final class Facility
+class Facility extends Model
 {
-    public function __construct(
-        public readonly int $id,
-        public readonly string $title,
-        public readonly string $description,
-    ) {
-    }
+    use HasFactory;
 
-    /** @param array<string, mixed> $row */
-    public static function fromRow(array $row): self
-    {
-        return new self((int) $row['id'], (string) $row['title'], (string) $row['description']);
-    }
+    protected $fillable = [
+        'title',
+        'description',
+    ];
 }

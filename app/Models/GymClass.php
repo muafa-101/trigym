@@ -1,38 +1,33 @@
 <?php
 
-declare(strict_types=1);
+namespace App\Models;
 
-namespace TriGym\Models;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
-final class GymClass
+class GymClass extends Model
 {
-    public function __construct(
-        public readonly int $id,
-        public readonly string $name,
-        public readonly string $description,
-        public readonly string $trainer,
-        public readonly string $days,
-        public readonly string $startTime,
-        public readonly string $endTime,
-    ) {
-    }
+    use HasFactory;
 
-    /** @param array<string, mixed> $row */
-    public static function fromRow(array $row): self
+    protected $table = 'classes';
+
+    protected $fillable = [
+        'name',
+        'description',
+        'trainer',
+        'days',
+        'start_time',
+        'end_time',
+    ];
+
+    public function users(): BelongsToMany
     {
-        return new self(
-            (int) $row['id'],
-            (string) $row['name'],
-            (string) $row['description'],
-            (string) $row['trainer'],
-            (string) $row['days'],
-            (string) $row['start_time'],
-            (string) $row['end_time'],
-        );
+        return $this->belongsToMany(User::class, 'enrollments', 'class_id', 'user_id');
     }
 
     public function timeLabel(): string
     {
-        return $this->startTime . ' - ' . $this->endTime . ' WIB';
+        return $this->start_time.' - '.$this->end_time.' WIB';
     }
 }

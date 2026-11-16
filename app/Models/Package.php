@@ -1,51 +1,42 @@
 <?php
 
-declare(strict_types=1);
+namespace App\Models;
 
-namespace TriGym\Models;
+use Carbon\Carbon;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
-use DateTimeImmutable;
-
-final class Package
+class Package extends Model
 {
-    public function __construct(
-        public readonly int $id,
-        public readonly string $name,
-        public readonly int $price,
-        public readonly string $period,
-        public readonly ?string $note,
-        public readonly string $description,
-        public readonly int $months,
-    ) {
-    }
+    use HasFactory;
 
-    /** @param array<string, mixed> $row */
-    public static function fromRow(array $row): self
+    protected $fillable = [
+        'name',
+        'price',
+        'period',
+        'note',
+        'description',
+        'months',
+    ];
+
+    public function users(): HasMany
     {
-        return new self(
-            (int) $row['id'],
-            (string) $row['name'],
-            (int) $row['price'],
-            (string) $row['period'],
-            $row['note'] !== null ? (string) $row['note'] : null,
-            (string) $row['description'],
-            (int) $row['months'],
-        );
+        return $this->hasMany(User::class);
     }
 
-    /** Contoh: "Rp2.400.000/tahun (hemat 2 bulan)." */
     public function priceLabel(): string
     {
-        $label = 'Rp' . number_format($this->price, 0, ',', '.') . '/' . $this->period;
-        if ($this->note !== null && $this->note !== '') {
-            $label .= ' (' . $this->note . ')';
+        $label = 'Rp'.number_format($this->price, 0, ',', '.').'/'.$this->period;
+        if (! empty($this->note)) {
+            $label .= ' ('.$this->note.')';
         }
-        return $label . '.';
+
+        return $label.'.';
     }
 
-    /** Tanggal berakhir paket bila dimulai hari ini (Y-m-d). */
     public function expiryFromToday(): string
     {
-        return (new DateTimeImmutable('today'))->modify("+{$this->months} months")->format('Y-m-d');
+        return Carbon::today()->addMonths($this->months)->format('Y-m-d');
     }
 }
