@@ -6,6 +6,7 @@ use App\Http\Controllers\EnrollController;
 use App\Http\Controllers\GenerateCodeController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProgramController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,7 +14,7 @@ use Illuminate\Support\Facades\Route;
 | Web Routes - TriGym Laravel
 |--------------------------------------------------------------------------
 | Seluruh rute aplikasi didaftarkan di sini dan diarahkan ke method
-| Controller terkait dengan method index() sebagai pintu masuk utama.
+| Controller terkait dengan arsitektur RESTful CRUD (Pertemuan 10).
 */
 
 // 1. Halaman Beranda (Landing Page)
@@ -42,11 +43,25 @@ Route::middleware('auth')->group(function () {
     // Generate Check-in Code (AJAX)
     Route::post('/generate-code', [GenerateCodeController::class, 'index'])->name('generate-code.index');
 
-    // CRUD Program Management (Fitur PresidentKu)
+    // CRUD Program Management (Pertemuan 10 Web Programming)
     Route::get('/programs', [ProgramController::class, 'index'])->name('programs.index');
+    Route::get('/programs/create', [ProgramController::class, 'create'])->name('programs.create');
     Route::post('/programs', [ProgramController::class, 'store'])->name('programs.store');
+    Route::get('/programs/{id}/edit', [ProgramController::class, 'edit'])->name('programs.edit');
     Route::post('/programs/update/{id}', [ProgramController::class, 'update'])->name('programs.update');
+    Route::put('/programs/{id}', [ProgramController::class, 'update'])->name('programs.update.put');
     Route::post('/programs/delete/{id}', [ProgramController::class, 'destroy'])->name('programs.destroy');
+    Route::delete('/programs/{id}', [ProgramController::class, 'destroy'])->name('programs.destroy.delete');
+
+    // CRUD Pengelolaan Informasi User & Member
+    Route::get('/users', [UserController::class, 'index'])->name('users.index');
+    Route::get('/users/create', [UserController::class, 'create'])->name('users.create');
+    Route::post('/users', [UserController::class, 'store'])->name('users.store');
+    Route::get('/users/{id}/edit', [UserController::class, 'edit'])->name('users.edit');
+    Route::post('/users/update/{id}', [UserController::class, 'update'])->name('users.update');
+    Route::put('/users/{id}', [UserController::class, 'update'])->name('users.update.put');
+    Route::post('/users/delete/{id}', [UserController::class, 'destroy'])->name('users.destroy');
+    Route::delete('/users/{id}', [UserController::class, 'destroy'])->name('users.destroy.delete');
 });
 
 // 4. Kompatibilitas URL Lama (.php)
@@ -55,6 +70,7 @@ Route::redirect('/dashboard.php', '/dashboard');
 Route::redirect('/signin.php', '/signin');
 Route::redirect('/signup.php', '/signup');
 Route::redirect('/programs.php', '/programs');
+Route::redirect('/users.php', '/users');
 Route::post('/generate-code.php', [GenerateCodeController::class, 'index'])->middleware('auth');
 Route::post('/enroll.php', [EnrollController::class, 'store'])->middleware('auth');
 Route::post('/logout.php', [AuthController::class, 'logout'])->middleware('auth');

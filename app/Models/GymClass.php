@@ -28,6 +28,6 @@ class GymClass extends Model
 
     public function timeLabel(): string
     {
-        return $this->start_time . ' - ' . $this->end_time . ' WIB';
+        return $this->start_time.' - '.$this->end_time.' WIB';
     }
 }

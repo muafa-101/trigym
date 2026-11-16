@@ -57,7 +57,7 @@ class User extends Authenticatable
 
     public function memberCode(): string
     {
-        return 'M-' . str_pad((string) $this->id, 5, '0', STR_PAD_LEFT);
+        return 'M-'.str_pad((string) $this->id, 5, '0', STR_PAD_LEFT);
     }
 
     public function expiryLabel(): string
@@ -67,7 +67,7 @@ class User extends Authenticatable
 
     public function daysLeft(): int
     {
-        if (!$this->expires_at) {
+        if (! $this->expires_at) {
             return 0;
         }
 

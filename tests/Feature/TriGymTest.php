@@ -2,8 +2,6 @@
 
 namespace Tests\Feature;
 
-use App\Models\GymClass;
-use App\Models\Package;
 use App\Models\Program;
 use App\Models\User;
 use Database\Seeders\DatabaseSeeder;
@@ -69,12 +67,84 @@ class TriGymTest extends TestCase
         $response->assertStatus(200);
         $response->assertSee('Program Management');
 
-        // Create Program
+        // Create Program Form
+        $response = $this->actingAs($user)->get('/programs/create');
+        $response->assertStatus(200);
+        $response->assertSee('Tambah Program Baru');
+
+        // Create Program Store
         $response = $this->actingAs($user)->post('/programs', [
             'nama' => 'Program Uji Coba',
             'deskripsi' => 'Deskripsi program uji coba untuk automated test.',
         ]);
         $response->assertRedirect('/programs');
         $this->assertDatabaseHas('programs', ['nama' => 'Program Uji Coba']);
+        $program = Program::where('nama', 'Program Uji Coba')->first();
+
+        // Edit Program Form
+        $response = $this->actingAs($user)->get('/programs/'.$program->id.'/edit');
+        $response->assertStatus(200);
+        $response->assertSee('Edit Program');
+
+        // Update Program
+        $response = $this->actingAs($user)->post('/programs/update/'.$program->id, [
+            'nama' => 'Program Uji Coba Updated',
+            'deskripsi' => 'Deskripsi program setelah update.',
+        ]);
+        $response->assertRedirect('/programs');
+        $this->assertDatabaseHas('programs', ['nama' => 'Program Uji Coba Updated']);
+
+        // Destroy Program
+        $response = $this->actingAs($user)->post('/programs/delete/'.$program->id);
+        $response->assertRedirect('/programs');
+        $this->assertDatabaseMissing('programs', ['id' => $program->id]);
+    }
+
+    public function test_user_management_crud(): void
+    {
+        $admin = User::where('email', 'abdoel@example.com')->first();
+        $this->assertNotNull($admin);
+
+        // Users Index
+        $response = $this->actingAs($admin)->get('/users');
+        $response->assertStatus(200);
+        $response->assertSee('Pengelolaan Member');
+
+        // Users Create Form
+        $response = $this->actingAs($admin)->get('/users/create');
+        $response->assertStatus(200);
+        $response->assertSee('Tambah Member Baru');
+
+        // Users Store
+        $response = $this->actingAs($admin)->post('/users', [
+            'name' => 'Member Baru Test',
+            'email' => 'memberbaru@example.com',
+            'password' => 'secret1234',
+            'status' => 'Aktif',
+            'package_id' => 1,
+        ]);
+        $response->assertRedirect('/users');
+        $this->assertDatabaseHas('users', ['email' => 'memberbaru@example.com']);
+        $newUser = User::where('email', 'memberbaru@example.com')->first();
+
+        // Users Edit Form
+        $response = $this->actingAs($admin)->get('/users/'.$newUser->id.'/edit');
+        $response->assertStatus(200);
+        $response->assertSee('Edit Informasi Member');
+
+        // Users Update
+        $response = $this->actingAs($admin)->post('/users/update/'.$newUser->id, [
+            'name' => 'Member Baru Updated',
+            'email' => 'memberbaru@example.com',
+            'status' => 'Nonaktif',
+            'package_id' => 1,
+        ]);
+        $response->assertRedirect('/users');
+        $this->assertDatabaseHas('users', ['id' => $newUser->id, 'name' => 'Member Baru Updated', 'status' => 'Nonaktif']);
+
+        // Users Destroy
+        $response = $this->actingAs($admin)->post('/users/delete/'.$newUser->id);
+        $response->assertRedirect('/users');
+        $this->assertDatabaseMissing('users', ['id' => $newUser->id]);
     }
 }

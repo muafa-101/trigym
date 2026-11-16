@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Checkin;
 use App\Models\GymClass;
+use App\Models\User;
 use App\Support\GymStatus;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
@@ -13,14 +14,14 @@ class DashboardController extends Controller
 {
     public function index(): View
     {
-        /** @var \App\Models\User $member */
+        /** @var User $member */
         $member = Auth::user();
 
         $allClasses = GymClass::all();
         $enrolledIds = $member->classes()->pluck('classes.id')->toArray();
 
         $primary = null;
-        if (!empty($enrolledIds)) {
+        if (! empty($enrolledIds)) {
             $primary = $allClasses->firstWhere('id', $enrolledIds[0]);
         }
 

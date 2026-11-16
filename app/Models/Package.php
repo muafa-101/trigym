@@ -27,11 +27,12 @@ class Package extends Model
 
     public function priceLabel(): string
     {
-        $label = 'Rp' . number_format($this->price, 0, ',', '.') . '/' . $this->period;
-        if (!empty($this->note)) {
-            $label .= ' (' . $this->note . ')';
+        $label = 'Rp'.number_format($this->price, 0, ',', '.').'/'.$this->period;
+        if (! empty($this->note)) {
+            $label .= ' ('.$this->note.')';
         }
-        return $label . '.';
+
+        return $label.'.';
     }
 
     public function expiryFromToday(): string

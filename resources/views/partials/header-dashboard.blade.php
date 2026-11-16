@@ -7,6 +7,7 @@
             <li><a href="{{ route('dashboard.index') }}#status" class="text-white text-base py-1 hover:underline underline-offset-4 decoration-2 decoration-[#C42B6F] focus-visible:outline-3 focus-visible:outline-[#C42B6F]">Status</a></li>
             <li><a href="{{ route('dashboard.index') }}#kelas" class="text-white text-base py-1 hover:underline underline-offset-4 decoration-2 decoration-[#C42B6F] focus-visible:outline-3 focus-visible:outline-[#C42B6F]">Kelas</a></li>
             <li><a href="{{ route('programs.index') }}" class="text-white text-base py-1 hover:underline underline-offset-4 decoration-2 decoration-[#FBC436] focus-visible:outline-3 focus-visible:outline-[#FBC436]">Program</a></li>
+            <li><a href="{{ route('users.index') }}" class="text-white text-base py-1 hover:underline underline-offset-4 decoration-2 decoration-[#FBC436] focus-visible:outline-3 focus-visible:outline-[#FBC436]">Member</a></li>
         </ul>
     </nav>
     <div class="ml-auto flex items-center gap-3">

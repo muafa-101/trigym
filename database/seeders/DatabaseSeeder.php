@@ -137,7 +137,7 @@ class DatabaseSeeder extends Seeder
 
         // Enroll demo user in first class
         $firstClass = GymClass::first();
-        if ($firstClass && !$demoUser->classes()->where('class_id', $firstClass->id)->exists()) {
+        if ($firstClass && ! $demoUser->classes()->where('class_id', $firstClass->id)->exists()) {
             $demoUser->classes()->attach($firstClass->id);
         }
     }

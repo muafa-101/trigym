@@ -206,18 +206,47 @@ Aplikasi TriGym menggunakan 7 tabel fungsional:
 
 ---
 
-### Fitur 7: CRUD Program PresidentKu
-- **1. Route**:
-  - `GET /programs` &rarr; `ProgramController@index` (Read + form)
-  - `POST /programs` &rarr; `ProgramController@store` (Create)
-  - `POST /programs/update/{id}` &rarr; `ProgramController@update` (Update)
-  - `POST /programs/delete/{id}` &rarr; `ProgramController@destroy` (Delete)
-- **2. Controller**:
-  - **Index**: Menampilkan semua data `Program::latest()->get()`. Jika terdapat query param `?edit={id}`, controller mencari data program terkait (`Program::find($editId)`) dan menyajikannya ke form edit.
-  - **Store**: Memvalidasi input `nama` dan `deskripsi`, lalu mengeksekusi `Program::create($validated)`. Mengirim pesan flash session `'Program berhasil ditambahkan.'`.
-  - **Update**: Memvalidasi input, mencari data via `Program::findOrFail($id)`, dan memperbaruinya dengan `$program->update($validated)`.
-  - **Destroy**: Menghapus data via `Program::findOrFail($id)->delete()`.
-- **3. View**: `resources/views/programs/index.blade.php` menyatukan form input interaktif, daftar tabel responsif, dan modal konfirmasi hapus JavaScript.
+### Fitur 7: CRUD Program PresidentKu (Pertemuan 10: Controller CRUD)
+- **1. Route (`routes/web.php`)**:
+  - `GET /programs` &rarr; `ProgramController@index` (READ: daftar program)
+  - `GET /programs/create` &rarr; `ProgramController@create` (FORM: form tambah program baru)
+  - `POST /programs` &rarr; `ProgramController@store` (CREATE: simpan program baru)
+  - `GET /programs/{id}/edit` &rarr; `ProgramController@edit` (FORM EDIT: form edit program)
+  - `POST /programs/update/{id}` & `PUT /programs/{id}` &rarr; `ProgramController@update` (UPDATE: simpan perubahan)
+  - `POST /programs/delete/{id}` & `DELETE /programs/{id}` &rarr; `ProgramController@destroy` (DELETE: hapus program)
+- **2. Controller (`ProgramController.php`)**:
+  - `index()` &rarr; **READ**: Mengambil daftar data program via `Program::latest()->get()` dan merender view `programs.index`.
+  - `create()` &rarr; **FORM**: Menampilkan view `programs.create` yang memuat form tambah program baru.
+  - `store()` &rarr; **CREATE**: Memvalidasi input `nama` dan `deskripsi`, lalu mengeksekusi `Program::create($validated)`. Redirect ke `programs.index` dengan session flash message `'Program berhasil ditambahkan.'`.
+  - `edit($id)` &rarr; **FORM EDIT**: Mencari data program via `Program::findOrFail($id)` dan merender view `programs.edit` dengan form terisi data lama.
+  - `update($id)` &rarr; **UPDATE**: Memvalidasi input dan memperbarui data melalui `$program->update($validated)`.
+  - `destroy($id)` &rarr; **DELETE**: Menghapus data program via `$program->delete()`.
+- **3. View Blade**:
+  - `resources/views/programs/index.blade.php`: Menampilkan tabel seluruh program, tombol aksi Edit & Hapus, serta tombol Tambah Program.
+  - `resources/views/programs/create.blade.php`: Halaman form pembuatan program baru dengan UI/UX konsisten.
+  - `resources/views/programs/edit.blade.php`: Halaman form pengeditan program yang ada.
+
+---
+
+### Fitur 8: CRUD Pengelolaan Informasi User & Member (Pertemuan 10: Controller CRUD)
+- **1. Route (`routes/web.php`)**:
+  - `GET /users` &rarr; `UserController@index` (READ: daftar user/member)
+  - `GET /users/create` &rarr; `UserController@create` (FORM: form tambah user/member)
+  - `POST /users` &rarr; `UserController@store` (CREATE: simpan user baru)
+  - `GET /users/{id}/edit` &rarr; `UserController@edit` (FORM EDIT: form edit profil/member)
+  - `POST /users/update/{id}` & `PUT /users/{id}` &rarr; `UserController@update` (UPDATE: perbarui data user)
+  - `POST /users/delete/{id}` & `DELETE /users/{id}` &rarr; `UserController@destroy` (DELETE: hapus user)
+- **2. Controller (`UserController.php`)**:
+  - `index()` &rarr; **READ**: Mengambil semua user dengan relasi paket via `User::with('package')->latest()->get()` untuk ditampilkan di tabel view `users.index`.
+  - `create()` &rarr; **FORM**: Mengambil paket keanggotaan dan menampilkan form pendaftaran manual member di view `users.create`.
+  - `store()` &rarr; **CREATE**: Memvalidasi nama, email unik, password, status (Aktif/Nonaktif), paket, dan tanggal kedaluwarsa. Password di-hash dengan bcrypt (`Hash::make`), kemudian disimpan ke model `User::create(...)`.
+  - `edit($id)` &rarr; **FORM EDIT**: Mengambil data user target via `User::findOrFail($id)` dan menampilkan form update profil/informasi di view `users.edit`.
+  - `update($id)` &rarr; **UPDATE**: Memvalidasi data yang diperbarui (dengan mengabaikan email unik milik diri sendiri), mengenkripsi password jika diisi baru, memperbarui masa aktif, dan menyimpan data.
+  - `destroy($id)` &rarr; **DELETE**: Menghapus user dari sistem (dengan pengaman agar pengguna tidak dapat menghapus akunnya sendiri saat sedang login).
+- **3. View Blade**:
+  - `resources/views/users/index.blade.php`: Menampilkan daftar seluruh member TriGym, ID member, paket, status, masa berlaku, dan tombol aksi.
+  - `resources/views/users/create.blade.php`: Form pembuatan data member baru dengan layout dan gaya seragam TriGym.
+  - `resources/views/users/edit.blade.php`: Form pengeditan informasi user (dapat diakses langsung dari tombol "Edit Profil" pada Kartu Member di Dashboard).
 
 ---
 

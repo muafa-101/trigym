@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\GymClass;
+use App\Models\User;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -16,7 +17,7 @@ class EnrollController extends Controller
 
     public function store(Request $request): RedirectResponse
     {
-        /** @var \App\Models\User $member */
+        /** @var User $member */
         $member = Auth::user();
 
         $classId = (int) $request->input('class_id', 0);
@@ -24,6 +25,6 @@ class EnrollController extends Controller
             $member->classes()->syncWithoutDetaching([$classId]);
         }
 
-        return redirect()->to(route('dashboard.index') . '#kelas');
+        return redirect()->to(route('dashboard.index').'#kelas');
     }
 }

@@ -5,8 +5,11 @@
 
     <!-- Kartu Profil -->
     <section id="profil" class="border-[4px] border-white rounded-[20px] overflow-hidden bg-white">
-        <div class="bg-[#0090BE] h-[36px] px-5 flex items-center">
+        <div class="bg-[#0090BE] h-[36px] px-5 flex items-center justify-between">
             <span class="font-display text-white text-[0.85rem] tracking-[2px] uppercase">TriGym Member Card</span>
+            <a href="{{ route('users.edit', $member->id) }}" class="font-display text-white text-[0.75rem] uppercase tracking-wider bg-[#006A8B] px-3 py-1 rounded-full hover:bg-[#C42B6F] transition-all">
+                ✏️ Edit Profil
+            </a>
         </div>
         <div class="mt-[6px] bg-[#0090BE] p-5 min-[901px]:p-7 flex flex-col min-[601px]:flex-row gap-5 min-[601px]:gap-6 min-[601px]:items-center">
             <div class="flex-1 flex flex-col gap-1 text-white self-stretch justify-between">

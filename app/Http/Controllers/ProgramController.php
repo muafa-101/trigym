@@ -10,12 +10,16 @@ use Illuminate\View\View;
 
 class ProgramController extends Controller
 {
-    public function index(Request $request): View
+    /**
+     * READ: Menampilkan daftar seluruh program
+     */
+    public function index(Request $request): View|RedirectResponse
     {
-        $member = Auth::user();
+        if ($request->filled('edit')) {
+            return redirect()->route('programs.edit', $request->query('edit'));
+        }
 
-        $editId = (int) $request->query('edit', 0);
-        $editItem = $editId > 0 ? Program::find($editId) : null;
+        $member = Auth::user();
 
         return view('programs.index', [
             'pageTitle' => 'TRIGYM - Program Management',
@@ -24,10 +28,28 @@ class ProgramController extends Controller
             'bodyClass' => 'min-h-screen flex flex-col',
             'member' => $member,
             'programs' => Program::latest()->get(),
-            'editItem' => $editItem,
         ]);
     }
 
+    /**
+     * FORM: Menampilkan form tambah program baru
+     */
+    public function create(): View
+    {
+        $member = Auth::user();
+
+        return view('programs.create', [
+            'pageTitle' => 'TRIGYM - Tambah Program Baru',
+            'header' => 'dashboard',
+            'footer' => 'app',
+            'bodyClass' => 'min-h-screen flex flex-col',
+            'member' => $member,
+        ]);
+    }
+
+    /**
+     * CREATE: Menyimpan program baru ke database
+     */
     public function store(Request $request): RedirectResponse
     {
         $validated = $request->validate([
@@ -40,6 +62,27 @@ class ProgramController extends Controller
         return redirect()->route('programs.index')->with('success', 'Program berhasil ditambahkan.');
     }
 
+    /**
+     * FORM EDIT: Menampilkan form edit program
+     */
+    public function edit(int|string $id): View
+    {
+        $member = Auth::user();
+        $program = Program::findOrFail($id);
+
+        return view('programs.edit', [
+            'pageTitle' => 'TRIGYM - Edit Program',
+            'header' => 'dashboard',
+            'footer' => 'app',
+            'bodyClass' => 'min-h-screen flex flex-col',
+            'member' => $member,
+            'program' => $program,
+        ]);
+    }
+
+    /**
+     * UPDATE: Menyimpan pembaruan program ke database
+     */
     public function update(Request $request, int|string $id): RedirectResponse
     {
         $validated = $request->validate([
@@ -53,6 +96,9 @@ class ProgramController extends Controller
         return redirect()->route('programs.index')->with('success', 'Program berhasil diperbarui.');
     }
 
+    /**
+     * DELETE: Menghapus program dari database
+     */
     public function destroy(int|string $id): RedirectResponse
     {
         $program = Program::findOrFail($id);
